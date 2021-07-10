@@ -1,3 +1,48 @@
 .pre-login {
   height: 100%;
+  text-align: center;
+  padding-top: 4rem;
+
+  &__title {
+    color: #47525E;
+  }
+
+  &__description {
+    color: #47525E;
+
+    p {
+      margin-bottom: 0 !important;
+    }
+  }
+
+  &__content{
+    border: 2px solid #8492A6;
+    border-radius: 4px;
+    margin-top: 3rem;
+
+    &--avaliador {
+      border-right: 2px solid #8492A6;
+    }
+
+    .login-type {
+      padding: 2rem 1rem;
+
+      &-title {
+        color: #47525E;
+        font-size: 1.4rem;
+        margin-bottom: 1.5rem;
+      }
+
+      &__content {
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+
+      }
+
+      &__actions {
+        justify-content: center;
+      }
+    }
+  }
 }
