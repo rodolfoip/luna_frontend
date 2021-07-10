@@ -1,7 +1,7 @@
 <template>
   <div class="pre-login">
     <v-container>
-      <v-row align="center" justify="space-between">
+      <v-row align="center">
         <v-col sm="10" lg="6" offset-sm="1" offset-lg="3">
           <h1 class="pre-login__title">Deseja entrar como?</h1>
           <div class="pre-login__description">
@@ -43,7 +43,9 @@
                     ></v-img>
                   </v-card-text>
                   <v-card-actions class="login-type__actions">
-                    <v-btn color="primary" elevation="2">Entrar</v-btn>
+                    <v-btn color="primary" elevation="2" to="/participant">
+                      Entrar
+                    </v-btn>
                   </v-card-actions>
                 </v-card>
               </v-col>
