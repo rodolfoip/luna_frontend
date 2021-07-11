@@ -1,0 +1,30 @@
+.login-participant {
+  display: flex;
+  height: 100%;
+  background-color: #E5E9F2;
+
+  &__form {
+    margin-top: 8rem;
+    padding: 3rem 4rem;
+    text-align: center;
+  }
+
+  .form {
+
+    &__title {
+      color: #47525E;
+      font-size: 1.875rem;
+      margin-bottom: 1.5rem;
+    }
+
+    &__subtitle {
+      color: #8190A5;
+      font-size: .875rem;
+      margin-bottom: 1.5rem;
+    }
+
+    &__input {
+      margin-bottom: 1rem;
+    }
+  }
+}
