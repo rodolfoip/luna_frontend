@@ -1,0 +1,59 @@
+.login-appraiser {
+  display: flex;
+  height: 100%;
+  background-color: #E5E9F2;
+
+  &__form {
+    margin-top: 8rem;
+    padding: 3rem 4rem;
+    text-align: center;
+  }
+
+  .form {
+    &__title {
+      color: #47525E;
+      font-size: 1.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    &__input {
+      margin-bottom: 1rem;
+    }
+
+    &__register {
+      color: #47525E;
+      margin-top: 1rem;
+    }
+
+    &-divisor {
+      position: relative;
+      font-weight: 500;
+      font-size: 1.25rem;
+
+      &:before,
+      &:after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        height: 1px;
+        background-color: #47525E;
+      }
+
+      &:before {
+        left: 0;
+        right: 60%;
+      }
+
+      &:after {
+        left: 60%;
+        right: 0;
+      }
+    }
+
+    &-info {
+      font-weight: 500;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+  }
+}

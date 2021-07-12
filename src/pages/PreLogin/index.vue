@@ -27,7 +27,9 @@
                     ></v-img>
                   </v-card-text>
                   <v-card-actions class="login-type__actions">
-                    <v-btn color="primary" elevation="2">Entrar</v-btn>
+                    <v-btn color="primary" elevation="2" to="/appraiser">
+                      Entrar
+                    </v-btn>
                   </v-card-actions>
                 </v-card>
               </v-col>
