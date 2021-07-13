@@ -3,6 +3,7 @@ import VueRouter from "vue-router";
 import PreLogin from "../pages/PreLogin";
 import ParticipantLogin from "../pages/ParticipantLogin";
 import AppraiserLogin from "../pages/AppraiserLogin";
+import AppraiserRegister from "../pages/AppraiserRegister";
 
 Vue.use(VueRouter);
 
@@ -21,6 +22,11 @@ const routes = [
     path: "/appraiser",
     name: "AppraiserLogin",
     component: AppraiserLogin,
+  },
+  {
+    path: "/appraiser/register",
+    name: "AppraiserRegister",
+    component: AppraiserRegister,
   },
 ];
 
