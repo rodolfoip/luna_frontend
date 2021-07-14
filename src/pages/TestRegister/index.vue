@@ -1,41 +1,24 @@
 <template>
   <div class="test-register">
-    <v-app-bar class="header">
-      <v-container>
-        <v-row align="center">
-          <v-col cols="auto">
-            <v-img
-              max-height="48"
-              max-width="48"
-              lazy-src="../../assets/images/luna_logo.png"
-              src="../../assets/images/luna_logo.png"
-              class="header__logo"
-            ></v-img>
-          </v-col>
-          <v-col>
-            <v-row justify="space-between">
-              <v-col cols="auto d-flex align-center">
-                <div class="header__title">Teste XXX</div>
-                <div class="header__subtitle">Protótipo</div>
-              </v-col>
-              <v-col cols="auto">
-                <v-btn
-                  small
-                  color="green darken-1"
-                  elevation="0"
-                  class="mr-6 white--text"
-                >
-                  Salvar
-                </v-btn>
-                <v-btn small color="info" elevation="0">
-                  Adicionar tarefas
-                </v-btn>
-              </v-col>
-            </v-row>
-          </v-col>
-        </v-row>
-      </v-container>
-    </v-app-bar>
+    <Header>
+      <v-row justify="space-between">
+        <v-col cols="auto d-flex align-center">
+          <div class="header__title">Teste XXX</div>
+          <div class="header__subtitle">Protótipo</div>
+        </v-col>
+        <v-col cols="auto">
+          <v-btn
+            small
+            color="green darken-1"
+            elevation="0"
+            class="mr-6 white--text"
+          >
+            Salvar
+          </v-btn>
+          <v-btn small color="info" elevation="0"> Adicionar tarefas </v-btn>
+        </v-col>
+      </v-row>
+    </Header>
     <v-container>
       <v-form class="pt-10">
         <v-row>
