@@ -4,6 +4,7 @@ import PreLogin from "../pages/PreLogin";
 import ParticipantLogin from "../pages/ParticipantLogin";
 import AppraiserLogin from "../pages/AppraiserLogin";
 import AppraiserRegister from "../pages/AppraiserRegister";
+import TestRegister from "../pages/TestRegister";
 
 Vue.use(VueRouter);
 
@@ -27,6 +28,11 @@ const routes = [
     path: "/appraiser/register",
     name: "AppraiserRegister",
     component: AppraiserRegister,
+  },
+  {
+    path: "/usability-test/register",
+    name: "TestRegister",
+    component: TestRegister,
   },
 ];
 
