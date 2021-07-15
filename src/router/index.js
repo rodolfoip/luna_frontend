@@ -8,6 +8,7 @@ import TestRegister from "../pages/TestRegister";
 import TaskRegister from "../pages/TaskRegister";
 import TestList from "../pages/TestList";
 import TaskList from "../pages/TaskList";
+import TestResults from "../pages/TestResults";
 
 Vue.use(VueRouter);
 
@@ -41,6 +42,11 @@ const routes = [
     path: "/usability-test/list",
     name: "TestList",
     component: TestList,
+  },
+  {
+    path: "/usability-test/results",
+    name: "TestResults",
+    component: TestResults,
   },
   {
     path: "/usability-test/task/register",
