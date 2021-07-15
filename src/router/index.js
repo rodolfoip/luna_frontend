@@ -6,6 +6,7 @@ import AppraiserLogin from "../pages/AppraiserLogin";
 import AppraiserRegister from "../pages/AppraiserRegister";
 import TestRegister from "../pages/TestRegister";
 import TaskRegister from "../pages/TaskRegister";
+import TestList from "../pages/TestList";
 
 Vue.use(VueRouter);
 
@@ -34,6 +35,11 @@ const routes = [
     path: "/usability-test/register",
     name: "TestRegister",
     component: TestRegister,
+  },
+  {
+    path: "/usability-test/list",
+    name: "TestList",
+    component: TestList,
   },
   {
     path: "/usability-test/task/register",
