@@ -6,7 +6,13 @@
           <div class="header__title">Teste XXX</div>
         </v-col>
         <v-col cols="auto">
-          <v-btn small color="info darken-1" elevation="0" class="white--text">
+          <v-btn
+            small
+            color="info darken-1"
+            elevation="0"
+            class="white--text"
+            to="/usability-test/list"
+          >
             Fechar resultados
           </v-btn>
         </v-col>
@@ -22,6 +28,15 @@
           class="elevation-1"
           @click:row="openItem"
         >
+          <template v-slot:item.affectGrid="{ item }">
+            <v-btn
+              elevation="0"
+              x-small
+              color="primary"
+              @click.stop="showAffectGrid(item.affectGrid)"
+              >Visualizar</v-btn
+            >
+          </template>
           <template v-slot:item.actions="{ item }">
             <v-icon small class="mr-2" @click="editItem(item)">
               mdi-pencil
@@ -29,6 +44,11 @@
             <v-icon small @click="deleteItem(item)"> mdi-delete </v-icon>
           </template>
         </v-data-table>
+        <AffectGridModal
+          :is-expanded="affectGrid.modal"
+          :posInMatriz="affectGrid.posInMatriz"
+          @close-dialog="affectGrid.modal = false"
+        />
       </div>
     </v-container>
   </div>

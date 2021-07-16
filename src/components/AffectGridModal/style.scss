@@ -1,0 +1,20 @@
+.affect-grid {
+  background-color: red;
+
+  .matriz {
+    display: flex;
+    flex-flow: row wrap;
+    border: 1px solid;
+
+    &__item {
+      width: 50px;
+      height: 50px;
+      flex-basis: 11.111111111%;
+      border: 1px solid;
+
+      &.active {
+        background-color: black;
+      }
+    }
+  }
+}

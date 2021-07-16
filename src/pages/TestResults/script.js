@@ -1,10 +1,12 @@
 import Header from "../../components/Header";
+import AffectGridModal from "../../components/AffectGridModal";
 
 export default {
   name: "TestList",
 
   components: {
     Header,
+    AffectGridModal,
   },
 
   data() {
@@ -33,6 +35,10 @@ export default {
           affectGrid: 65,
         },
       ],
+      affectGrid: {
+        modal: false,
+        posInMatriz: 0,
+      },
     };
   },
 
@@ -40,11 +46,18 @@ export default {
     openItem(item) {
       console.log(item);
     },
+
     editItem(item) {
       console.log(item);
     },
+
     deleteItem(item) {
       console.log(item);
+    },
+
+    showAffectGrid(posInMatriz) {
+      this.affectGrid.posInMatriz = posInMatriz;
+      this.affectGrid.modal = true;
     },
   },
 };
