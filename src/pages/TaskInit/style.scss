@@ -1,0 +1,18 @@
+.task-init {
+  &__title {
+    color: #47525E;
+    font-size: 1.75rem;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  &__content {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  &__action {
+    text-align: center;
+    margin-top: 2rem;
+  }
+}

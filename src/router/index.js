@@ -10,6 +10,7 @@ import TestList from "../pages/TestList";
 import TaskList from "../pages/TaskList";
 import TestResults from "../pages/TestResults";
 import TestInit from "../pages/TestInit";
+import TaskInit from "../pages/TaskInit";
 
 Vue.use(VueRouter);
 
@@ -63,6 +64,11 @@ const routes = [
     path: "/usability-test/task/list",
     name: "TaskList",
     component: TaskList,
+  },
+  {
+    path: "/usability-test/task/init",
+    name: "TaskInit",
+    component: TaskInit,
   },
 ];
 
