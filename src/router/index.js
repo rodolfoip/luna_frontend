@@ -11,6 +11,7 @@ import TaskList from "../pages/TaskList";
 import TestResults from "../pages/TestResults";
 import TestInit from "../pages/TestInit";
 import TaskInit from "../pages/TaskInit";
+import TaskForm from "../pages/TaskForm";
 
 Vue.use(VueRouter);
 
@@ -69,6 +70,11 @@ const routes = [
     path: "/usability-test/task/init",
     name: "TaskInit",
     component: TaskInit,
+  },
+  {
+    path: "/usability-test/task/sus",
+    name: "TaskForm",
+    component: TaskForm,
   },
 ];
 
