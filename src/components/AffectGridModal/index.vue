@@ -5,7 +5,11 @@
     @click:outside="closeDialog"
     max-width="1000"
   >
-    <AffectGrid :pos-in-matriz="posInMatriz" />
+    <v-card>
+      <v-container>
+        <AffectGrid :pos-in-matriz="posInMatriz" />
+      </v-container>
+    </v-card>
   </v-dialog>
 </template>
 
