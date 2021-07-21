@@ -1,5 +1,5 @@
-import Header from "../../components/Header";
-import AffectGridModal from "../../components/AffectGridModal";
+import Header from "@/components/Header";
+import AffectGridModal from "@/components/AffectGridModal";
 
 export default {
   name: "TestList",
