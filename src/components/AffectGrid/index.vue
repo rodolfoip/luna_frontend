@@ -1,10 +1,5 @@
 <template>
-  <v-dialog
-    content-class="affect-grid-modal"
-    v-model="isExpanded"
-    @click:outside="closeDialog"
-    max-width="1000"
-  >
+  <div class="affect-grid">
     <v-card>
       <v-container>
         <v-row align="center">
@@ -31,7 +26,7 @@
         </v-row>
       </v-container>
     </v-card>
-  </v-dialog>
+  </div>
 </template>
 
 <script src="./script.js"></script>

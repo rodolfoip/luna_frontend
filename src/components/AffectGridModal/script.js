@@ -1,5 +1,10 @@
+import AffectGrid from "@/components/AffectGrid";
 export default {
   name: "AffectGridModal",
+
+  components: {
+    AffectGrid,
+  },
 
   props: {
     isExpanded: {
