@@ -12,6 +12,7 @@ import TestResults from "../pages/TestResults";
 import TestInit from "../pages/TestInit";
 import TaskInit from "../pages/TaskInit";
 import TaskForm from "../pages/TaskForm";
+import TaskAffectGrid from "../pages/TaskAffectGrid";
 
 Vue.use(VueRouter);
 
@@ -75,6 +76,11 @@ const routes = [
     path: "/usability-test/task/sus",
     name: "TaskForm",
     component: TaskForm,
+  },
+  {
+    path: "/usability-test/task/affect-grid",
+    name: "TaskAffectGrid",
+    component: TaskAffectGrid,
   },
 ];
 

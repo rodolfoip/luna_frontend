@@ -9,9 +9,10 @@
         <div class="matriz">
           <div
             class="matriz__item"
-            :class="{ active: item === posInMatriz }"
-            v-for="item in 81"
+            :class="{ active: item === activePosition }"
             :key="item"
+            v-for="item in 81"
+            @click="onClickPosition(item)"
           >
             <span class="d-none">{{ item }}</span>
           </div>
