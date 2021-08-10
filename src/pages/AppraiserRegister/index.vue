@@ -38,7 +38,9 @@
                 required
               ></v-text-field>
             </v-form>
-            <v-btn color="primary" elevation="2">Salvar</v-btn>
+            <v-btn color="primary" elevation="2" @click="register">
+              Salvar
+            </v-btn>
           </v-card>
         </v-col>
       </v-row>

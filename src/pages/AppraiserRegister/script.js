@@ -11,4 +11,11 @@ export default {
       },
     };
   },
+
+  methods: {
+    register() {
+      // TODO - Register user and go to appraiser login page
+      this.$router.push("/appraiser");
+    },
+  },
 };
