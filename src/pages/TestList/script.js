@@ -19,7 +19,7 @@ export default {
         {
           name: "Teste 1",
           realized: false,
-          quantity: 10,
+          quantity: 0,
         },
         {
           name: "Teste 2",
