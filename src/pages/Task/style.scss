@@ -1,0 +1,17 @@
+.task-menu {
+  &__header {
+    &.v-expansion-panel-header {
+      min-height: 2rem;
+      padding-top: .5rem;
+      padding-bottom: .5rem;
+    }
+  }
+
+  &__content {
+    text-align: center;
+
+    .description {
+      margin-bottom: 1rem;
+    }
+  }
+}
