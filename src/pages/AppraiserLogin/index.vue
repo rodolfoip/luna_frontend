@@ -21,7 +21,7 @@
                 required
               />
             </v-form>
-            <v-btn color="primary" elevation="2">Entrar</v-btn>
+            <v-btn color="primary" elevation="2" @click="login">Entrar</v-btn>
             <div class="form__register">
               <h5 class="form-divisor">ou</h5>
               <h5 class="form-info">Crie uma conta</h5>
