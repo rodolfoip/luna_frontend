@@ -1,7 +1,13 @@
 <template>
   <div class="test-list">
     <Header>
-      <v-btn small color="green darken-1" elevation="0" class="white--text">
+      <v-btn
+        small
+        color="green darken-1"
+        elevation="0"
+        class="white--text"
+        to="/usability-test/register"
+      >
         Criar teste
       </v-btn>
     </Header>
