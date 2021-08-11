@@ -6,4 +6,15 @@ export default {
   components: {
     Header,
   },
+
+  methods: {
+    save() {
+      // TODO - save task
+    },
+
+    addNewTask() {
+      // TODO - save task and clean form
+      this.save();
+    },
+  },
 };
