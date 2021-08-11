@@ -6,4 +6,11 @@ export default {
       accessCode: "",
     };
   },
+
+  methods: {
+    initTest() {
+      // TODO - Validate access code and init test
+      this.$router.push("/usability-test/init");
+    },
+  },
 };
