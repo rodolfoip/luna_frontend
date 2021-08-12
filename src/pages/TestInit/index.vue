@@ -35,7 +35,13 @@
             </div>
           </div>
           <div class="test-init__action">
-            <v-btn color="green white--text" elevation="0">Iniciar</v-btn>
+            <v-btn
+              color="green white--text"
+              elevation="0"
+              to="/usability-test/task/init"
+            >
+              Iniciar
+            </v-btn>
           </div>
         </v-col>
       </v-row>
