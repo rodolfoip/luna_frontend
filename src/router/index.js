@@ -69,7 +69,7 @@ const routes = [
     component: TaskList,
   },
   {
-    path: "/usability-test/task/init",
+    path: "/usability-test/task/init/:order",
     name: "TaskInit",
     component: TaskInit,
   },
