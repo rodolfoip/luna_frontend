@@ -38,7 +38,9 @@
             </div>
           </div>
           <div class="task-init__action">
-            <v-btn color="green white--text" elevation="0">Iniciar</v-btn>
+            <v-btn color="green white--text" elevation="0" @click="initTest">
+              Iniciar
+            </v-btn>
           </div>
         </v-col>
       </v-row>

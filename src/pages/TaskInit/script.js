@@ -6,4 +6,11 @@ export default {
   components: {
     Header,
   },
+
+  methods: {
+    initTest() {
+      const orderParam = this.$router.params.order;
+      this.$router.push({ name: "Task", params: { order: orderParam } });
+    },
+  },
 };
