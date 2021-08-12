@@ -9,7 +9,7 @@ export default {
 
   methods: {
     initTest() {
-      const orderParam = this.$router.params.order;
+      const orderParam = this.$route.params.order;
       this.$router.push({ name: "Task", params: { order: orderParam } });
     },
   },
