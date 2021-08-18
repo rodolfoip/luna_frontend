@@ -11,14 +11,22 @@
                 dense
                 v-model="email"
                 label="Email"
+                type="email"
                 required
+                :error-messages="emailErrors"
+                @input="$v.email.$touch()"
+                @blur="$v.email.$touch()"
               />
               <v-text-field
                 class="form__input"
                 dense
                 v-model="password"
                 label="Senha"
+                type="password"
                 required
+                :error-messages="passwordError"
+                @input="$v.email.$touch()"
+                @blur="$v.email.$touch()"
               />
             </v-form>
             <v-btn color="primary" elevation="2" @click="login">Entrar</v-btn>
