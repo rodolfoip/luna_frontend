@@ -60,7 +60,6 @@ export default {
     },
     password: {
       required,
-      email,
     },
   },
 };
