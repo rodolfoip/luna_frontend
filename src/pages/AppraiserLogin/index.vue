@@ -25,8 +25,8 @@
                 type="password"
                 required
                 :error-messages="passwordError"
-                @input="$v.email.$touch()"
-                @blur="$v.email.$touch()"
+                @input="$v.password.$touch()"
+                @blur="$v.password.$touch()"
               />
               <v-btn color="primary" elevation="2" type="submit">Entrar</v-btn>
             </v-form>
