@@ -1,15 +1,24 @@
 <template>
   <div class="test-list">
     <Header>
-      <v-btn
-        small
-        color="green darken-1"
-        elevation="0"
-        class="white--text"
-        to="/usability-test/register"
-      >
-        Criar teste
-      </v-btn>
+      <v-row class="flex-fill">
+        <v-col cols="flex-fill">
+          <v-btn
+            small
+            color="green darken-1"
+            elevation="0"
+            class="white--text"
+            to="/usability-test/register"
+          >
+            Criar teste
+          </v-btn>
+        </v-col>
+        <v-col cols="auto">
+          <v-btn small color="blue-grey" class="white--text ml-auto" to="/">
+            Sair da conta
+          </v-btn>
+        </v-col>
+      </v-row>
     </Header>
     <v-container>
       <div class="test-list__content">
