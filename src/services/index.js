@@ -1,3 +1,3 @@
 export { API } from "./config";
 
-export { login } from "./appraiser";
+export { login, register } from "./appraiser";

@@ -1,4 +1,5 @@
 import { required, email, minLength, sameAs } from "vuelidate/lib/validators";
+import { register } from "@/services";
 
 export default {
   name: "AppraiserRegister",
@@ -50,13 +51,23 @@ export default {
   },
 
   methods: {
-    register() {
-      // TODO - Register user and go to appraiser login page
+    async register() {
       this.$v.$touch();
       if (this.$v.$error && this.$v.$invalid) {
         return;
       }
-      this.$router.push("/appraiser");
+
+      try {
+        await register({
+          name: this.form.name,
+          email: this.form.email,
+          password: this.form.password,
+        });
+
+        this.$router.push("/appraiser");
+      } catch (err) {
+        console.error(err.response.data.error);
+      }
     },
   },
 
