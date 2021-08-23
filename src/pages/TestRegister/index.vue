@@ -12,6 +12,7 @@
             color="green darken-1"
             elevation="0"
             class="mr-6 white--text"
+            @click="register"
           >
             Salvar
           </v-btn>
@@ -35,12 +36,20 @@
               placeholder="Nome"
               outlined
               dense
+              v-model="form.name"
+              :error-messages="nameErrors"
+              @input="$v.form.name.$touch()"
+              @blur="$v.form.name.$touch()"
             ></v-text-field>
             <v-text-field
               label="Código de acesso ao teste"
               placeholder="Código"
               outlined
               dense
+              v-model="form.code"
+              :error-messages="codeErrors"
+              @input="$v.form.code.$touch()"
+              @blur="$v.form.code.$touch()"
             >
             </v-text-field>
             <v-btn color="secondary" small elevation="0" class="mb-6">
@@ -51,6 +60,10 @@
               placeholder="Link"
               outlined
               dense
+              :error-messages="externalLinkError"
+              v-model="form.external_link"
+              @input="$v.form.external_link.$touch()"
+              @blur="$v.form.external_link.$touch()"
             ></v-text-field>
           </v-col>
           <v-col cols="4" offset="1">
@@ -59,6 +72,10 @@
               placeholder="Link"
               outlined
               dense
+              :error-messages="prototypeLinkError"
+              v-model="form.prototype_link"
+              @input="$v.form.prototype_link.$touch()"
+              @blur="$v.form.prototype_link.$touch()"
             ></v-text-field>
           </v-col>
         </v-row>
