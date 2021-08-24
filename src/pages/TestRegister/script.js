@@ -1,4 +1,5 @@
 import Header from "../../components/Header";
+import { registerTest } from "../../services";
 
 import { required, minLength, url } from "vuelidate/lib/validators";
 
@@ -55,10 +56,21 @@ export default {
   },
 
   methods: {
-    register() {
+    async register() {
       this.$v.$touch();
       if (this.$v.$error && this.$v.$invalid) {
         return;
+      }
+
+      try {
+        await registerTest({
+          name: this.form.name,
+          accessCode: this.form.code,
+          externalLink: this.form.external_link,
+          prototypeLink: this.form.prototype_link,
+        });
+      } catch (err) {
+        console.error(err.response.data.error);
       }
     },
   },
