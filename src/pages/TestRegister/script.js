@@ -63,19 +63,33 @@ export default {
       }
 
       try {
-        await registerTest({
+        return await registerTest({
           name: this.form.name,
           accessCode: this.form.code,
           externalLink: this.form.external_link,
           prototypeLink: this.form.prototype_link,
         });
       } catch (err) {
-        console.error(err.response.data.error);
+        return err;
       }
     },
     saveTest() {
-      this.register();
-      this.$router.push("/usability-test/list");
+      this.register()
+        .then((response) => {
+          if (response?.status === 201 && response?.statusText === "Created") {
+            this.$router.push("/usability-test/list");
+          }
+        })
+        .catch((err) => console.error(err));
+    },
+    addTask() {
+      this.register()
+        .then((response) => {
+          if (response?.status === 201 && response?.statusText === "Created") {
+            this.$router.push("/usability-test/task/register");
+          }
+        })
+        .catch((err) => console.error(err));
     },
   },
 

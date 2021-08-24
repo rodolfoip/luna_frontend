@@ -16,12 +16,7 @@
           >
             Salvar
           </v-btn>
-          <v-btn
-            small
-            color="info"
-            elevation="0"
-            to="/usability-test/task/register"
-          >
+          <v-btn small color="info" elevation="0" @click="addTask">
             Adicionar tarefas
           </v-btn>
         </v-col>
