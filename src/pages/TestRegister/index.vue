@@ -12,7 +12,7 @@
             color="green darken-1"
             elevation="0"
             class="mr-6 white--text"
-            @click="register"
+            @click="saveTest"
           >
             Salvar
           </v-btn>

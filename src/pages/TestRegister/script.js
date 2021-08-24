@@ -73,6 +73,10 @@ export default {
         console.error(err.response.data.error);
       }
     },
+    saveTest() {
+      this.register();
+      this.$router.push("/usability-test/list");
+    },
   },
 
   validations: {
