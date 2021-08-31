@@ -86,6 +86,10 @@ export default {
       this.register()
         .then((response) => {
           if (response?.status === 201 && response?.statusText === "Created") {
+            this.$store.dispatch({
+              type: "test/setTest",
+              value: response.data.usabilityTest,
+            });
             this.$router.push("/usability-test/task/register");
           }
         })
