@@ -90,7 +90,12 @@ export default {
               type: "test/setTest",
               value: response.data.usabilityTest,
             });
-            this.$router.push("/usability-test/task/register");
+            this.$router.push({
+              name: "TaskRegister",
+              params: {
+                id: response.data.usabilityTest._id,
+              },
+            });
           }
         })
         .catch((err) => console.error(err));

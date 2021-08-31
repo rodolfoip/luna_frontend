@@ -59,7 +59,7 @@ const routes = [
     component: TestResults,
   },
   {
-    path: "/usability-test/task/register",
+    path: "/usability-test/:id/task/register",
     name: "TaskRegister",
     component: TaskRegister,
   },
