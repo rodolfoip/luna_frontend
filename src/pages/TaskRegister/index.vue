@@ -12,10 +12,17 @@
             color="green darken-1"
             elevation="0"
             class="mr-6 white--text"
+            @click="save"
           >
             Salvar
           </v-btn>
-          <v-btn small color="info" class="mr-6" elevation="0">
+          <v-btn
+            small
+            color="info"
+            class="mr-6"
+            elevation="0"
+            @click="addNewTask"
+          >
             Adicionar tarefa
           </v-btn>
           <v-btn
@@ -39,6 +46,10 @@
               placeholder="ordem"
               outlined
               dense
+              v-model="form.order"
+              :error-messages="orderErrors"
+              @input="$v.form.order.$touch()"
+              @blur="$v.form.order.$touch()"
             ></v-text-field>
           </v-col>
         </v-row>
@@ -47,6 +58,10 @@
           placeholder="roteiro"
           outlined
           dense
+          v-model="form.description"
+          :error-messages="descriptionErrors"
+          @input="$v.form.description.$touch()"
+          @blur="$v.form.description.$touch()"
         >
         </v-textarea>
         <v-btn
@@ -54,10 +69,13 @@
           color="green darken-1"
           elevation="0"
           class="mr-6 white--text"
+          @click="save"
         >
           Salvar
         </v-btn>
-        <v-btn small color="info" elevation="0"> Adicionar tarefa </v-btn>
+        <v-btn small color="info" elevation="0" @click="addNewTask">
+          Adicionar tarefa
+        </v-btn>
       </v-form>
     </v-container>
   </div>
