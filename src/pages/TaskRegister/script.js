@@ -1,5 +1,6 @@
 import { required, minLength, numeric } from "vuelidate/lib/validators";
 import Header from "../../components/Header";
+import { registerTask } from "@/services";
 
 export default {
   name: "TaskRegister",
@@ -38,17 +39,46 @@ export default {
   },
 
   methods: {
-    save() {
-      // TODO - save task
+    async save() {
       this.$v.$touch();
       if (this.$v.$error && this.$v.$invalid) {
         return;
       }
+
+      try {
+        return await registerTask({
+          testId: this.$route.params.id,
+          order: this.form.order,
+          description: this.form.description,
+        });
+      } catch (err) {
+        return err;
+      }
+    },
+
+    registerTask() {
+      this.save()
+        .then((response) => {
+          if (response?.status === 201 && response?.statusText === "Created") {
+            console.log("Task saved");
+          }
+        })
+        .catch((err) => console.error(err));
     },
 
     addNewTask() {
-      // TODO - save task and clean form
-      this.save();
+      this.save()
+        .then((response) => {
+          if (response?.status === 201 && response?.statusText === "Created") {
+            this.form = {
+              testId: null,
+              order: null,
+              description: null,
+            };
+            this.$v.$reset();
+          }
+        })
+        .catch((err) => console.error(err));
     },
   },
 

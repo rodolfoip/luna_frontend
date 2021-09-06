@@ -69,7 +69,7 @@
           color="green darken-1"
           elevation="0"
           class="mr-6 white--text"
-          @click="save"
+          @click="registerTask"
         >
           Salvar
         </v-btn>
