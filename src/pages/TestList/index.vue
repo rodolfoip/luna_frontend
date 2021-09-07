@@ -25,7 +25,7 @@
         <h2 class="test-list__title">Lista de testes</h2>
         <v-data-table
           :headers="headers"
-          :items="items"
+          :items="listTests"
           :items-per-page="5"
           class="elevation-1"
           @click:row="openItem"
@@ -39,10 +39,10 @@
             </v-chip>
           </template>
           <template v-slot:item.actions="{ item }">
-            <v-icon small class="mr-2" @click="editItem(item)">
+            <v-icon small class="mr-2" @click.stop="editItem(item)">
               mdi-pencil
             </v-icon>
-            <v-icon small @click="deleteItem(item)"> mdi-delete </v-icon>
+            <v-icon small @click.stop="deleteItem(item)"> mdi-delete </v-icon>
           </template>
         </v-data-table>
       </div>

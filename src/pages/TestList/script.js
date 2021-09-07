@@ -1,4 +1,5 @@
 import Header from "../../components/Header";
+import { listTests } from "../../services/test";
 
 export default {
   name: "TestList",
@@ -15,30 +16,40 @@ export default {
         { text: "Qtd realizados", value: "quantity" },
         { text: "Ações", value: "actions", sortable: false },
       ],
-      items: [
-        {
-          name: "Teste 1",
-          realized: false,
-          quantity: 0,
-        },
-        {
-          name: "Teste 2",
-          realized: true,
-          quantity: 15,
-        },
-      ],
+      items: [],
     };
   },
 
+  mounted() {
+    this.getTestList();
+  },
+
+  computed: {
+    listTests() {
+      return this.$data.items.map((test) => {
+        return {
+          ...test,
+          realized: test.quantity > 0,
+        };
+      });
+    },
+  },
+
   methods: {
+    getTestList() {
+      listTests().then((response) => {
+        const { data } = response;
+        this.$data.items = data.list;
+      });
+    },
     openItem(item) {
-      console.log(item);
+      console.log("open item", item);
     },
     editItem(item) {
-      console.log(item);
+      console.log("edit item", item);
     },
     deleteItem(item) {
-      console.log(item);
+      console.log("deleteItem", item);
     },
   },
 };

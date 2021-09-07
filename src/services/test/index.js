@@ -13,3 +13,7 @@ export const registerTest = ({
     prototypeLink,
   });
 };
+
+export const listTests = () => {
+  return API.get("/usability-test");
+};
