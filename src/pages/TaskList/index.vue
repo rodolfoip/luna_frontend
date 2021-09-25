@@ -21,7 +21,7 @@
         >
           <template v-slot:expanded-item="{ headers, item }">
             <td :colspan="headers.length">
-              More info about {{ item.description }}
+              {{ item.description }}
             </td>
           </template>
           <template v-slot:item.description="{ item }">
