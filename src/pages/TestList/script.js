@@ -58,8 +58,8 @@ export default {
     editItem(item) {
       console.log("edit item", item);
     },
-    deleteItem() {
-      deleteTest()
+    deleteItem(item) {
+      deleteTest(item._id)
         .then(() => {
           this.alertConfig.show = true;
         })
