@@ -43,7 +43,11 @@ export default {
       });
     },
     openItem(item) {
-      console.log("open item", item);
+      this.$store.dispatch({
+        type: "test/setTest",
+        value: item,
+      });
+      this.$router.push({ name: "TaskList", params: { id: item._id } });
     },
     editItem(item) {
       console.log("edit item", item);
