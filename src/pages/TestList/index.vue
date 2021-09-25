@@ -1,5 +1,14 @@
 <template>
   <div class="test-list">
+    <v-snackbar
+      v-model="alertConfig.show"
+      :timeout="alertConfig.timeout"
+      right
+      top
+      :color="alertConfig.type"
+    >
+      {{ alertConfig.text }}
+    </v-snackbar>
     <Header>
       <v-row class="flex-fill">
         <v-col cols="flex-fill">

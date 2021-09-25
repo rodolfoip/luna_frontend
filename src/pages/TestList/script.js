@@ -1,5 +1,5 @@
 import Header from "../../components/Header";
-import { listTests } from "../../services/test";
+import { listTests, deleteTest } from "../../services/test";
 
 export default {
   name: "TestList",
@@ -10,6 +10,12 @@ export default {
 
   data() {
     return {
+      alertConfig: {
+        show: false,
+        timeout: 2000,
+        type: "success",
+        text: "Teste excluído com sucesso",
+      },
       headers: [
         { text: "Nome", align: "start", value: "name" },
         { text: "Realizado?", value: "realized" },
@@ -52,8 +58,19 @@ export default {
     editItem(item) {
       console.log("edit item", item);
     },
-    deleteItem(item) {
-      console.log("deleteItem", item);
+    deleteItem() {
+      deleteTest()
+        .then(() => {
+          this.alertConfig.show = true;
+        })
+        .catch(({ response }) => {
+          this.alertConfig.text = response.data.error;
+          this.alertConfig.type = "red accent-4";
+          this.alertConfig.show = true;
+        })
+        .finally(() => {
+          this.getTestList();
+        });
     },
   },
 };

@@ -47,5 +47,5 @@ export const updateTest = ({
 };
 
 export const deleteTest = (id) => {
-  return API.delete("/usability-test", { id });
+  return API.delete("/usability-test", { data: { id: id } });
 };
