@@ -56,7 +56,7 @@ export default {
       this.$router.push({ name: "TaskList", params: { id: item._id } });
     },
     editItem(item) {
-      console.log("edit item", item);
+      this.$router.push({ name: "TestEdit", params: { id: item._id } });
     },
     deleteItem(item) {
       deleteTest(item._id)

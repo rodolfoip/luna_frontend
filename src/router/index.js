@@ -4,7 +4,7 @@ import PreLogin from "../pages/PreLogin";
 import ParticipantLogin from "../pages/ParticipantLogin";
 import AppraiserLogin from "../pages/AppraiserLogin";
 import AppraiserRegister from "../pages/AppraiserRegister";
-import TestRegister from "../pages/TestRegister";
+import TestForm from "../pages/TestForm";
 import TaskRegister from "../pages/TaskRegister";
 import TestList from "../pages/TestList";
 import TaskList from "../pages/TaskList";
@@ -41,7 +41,12 @@ const routes = [
   {
     path: "/usability-test/register",
     name: "TestRegister",
-    component: TestRegister,
+    component: TestForm,
+  },
+  {
+    path: "/usability-test/:id/edit",
+    name: "TestEdit",
+    component: TestForm,
   },
   {
     path: "/usability-test/list",

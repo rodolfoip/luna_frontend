@@ -30,17 +30,10 @@ export const getTestByAccessCode = (accessCode) => {
   return API.get(`/usability-test/accessCode/${accessCode}`);
 };
 
-export const updateTest = ({
-  _id,
-  name,
-  accessCode,
-  externalLink,
-  prototypeLink,
-}) => {
+export const updateTest = ({ _id, name, externalLink, prototypeLink }) => {
   return API.put("/usability-test", {
     _id,
     name,
-    accessCode,
     externalLink,
     prototypeLink,
   });

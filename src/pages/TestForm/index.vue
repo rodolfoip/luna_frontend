@@ -37,17 +37,24 @@
               @blur="$v.form.name.$touch()"
             ></v-text-field>
             <v-text-field
+              v-if="!isEditPage"
               label="Código de acesso ao teste"
               placeholder="Código"
               outlined
               dense
-              v-model="form.code"
+              v-model="form.accessCode"
               :error-messages="codeErrors"
-              @input="$v.form.code.$touch()"
-              @blur="$v.form.code.$touch()"
+              @input="$v.form.accessCode.$touch()"
+              @blur="$v.form.accessCode.$touch()"
             >
             </v-text-field>
-            <v-btn color="secondary" small elevation="0" class="mb-6">
+            <v-btn
+              v-if="!isEditPage"
+              color="secondary"
+              small
+              elevation="0"
+              class="mb-6"
+            >
               Gerar código
             </v-btn>
             <v-text-field
@@ -56,9 +63,9 @@
               outlined
               dense
               :error-messages="externalLinkError"
-              v-model="form.external_link"
-              @input="$v.form.external_link.$touch()"
-              @blur="$v.form.external_link.$touch()"
+              v-model="form.externalLink"
+              @input="$v.form.externalLink.$touch()"
+              @blur="$v.form.externalLink.$touch()"
             ></v-text-field>
           </v-col>
           <v-col cols="4" offset="1">
@@ -68,9 +75,9 @@
               outlined
               dense
               :error-messages="prototypeLinkError"
-              v-model="form.prototype_link"
-              @input="$v.form.prototype_link.$touch()"
-              @blur="$v.form.prototype_link.$touch()"
+              v-model="form.prototypeLink"
+              @input="$v.form.prototypeLink.$touch()"
+              @blur="$v.form.prototypeLink.$touch()"
             ></v-text-field>
           </v-col>
         </v-row>
@@ -80,4 +87,3 @@
 </template>
 
 <script src="./script.js"></script>
-<style lang="scss" src="./style.scss"></style>
