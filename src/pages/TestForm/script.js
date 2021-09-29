@@ -127,22 +127,33 @@ export default {
       }
     },
     addTask() {
-      this.register()
-        .then((response) => {
-          if (response?.status === 201 && response?.statusText === "Created") {
-            this.$store.dispatch({
-              type: "test/setTest",
-              value: response.data.usabilityTest,
-            });
-            this.$router.push({
-              name: "TaskRegister",
-              params: {
-                id: response.data.usabilityTest._id,
-              },
-            });
-          }
-        })
-        .catch((err) => console.error(err));
+      if (!this.isEditPage) {
+        this.register()
+          .then((response) => {
+            if (
+              response?.status === 201 &&
+              response?.statusText === "Created"
+            ) {
+              this.$store.dispatch({
+                type: "test/setTest",
+                value: response.data.usabilityTest,
+              });
+              this.$router.push({
+                name: "TaskRegister",
+                params: {
+                  id: response.data.usabilityTest._id,
+                },
+              });
+            }
+          })
+          .catch((err) => console.error(err));
+      }
+      this.$router.push({
+        name: "TaskRegister",
+        params: {
+          id: this.$route.params.id,
+        },
+      });
     },
   },
 
