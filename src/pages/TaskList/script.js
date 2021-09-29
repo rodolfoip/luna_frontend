@@ -26,6 +26,12 @@ export default {
         { text: "Ações", value: "actions", sortable: false },
       ],
       items: [],
+      testRegisterRoute: {
+        name: "TaskRegister",
+        params: {
+          id: this.$route.params.id,
+        },
+      },
     };
   },
 

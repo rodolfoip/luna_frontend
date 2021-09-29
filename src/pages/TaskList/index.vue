@@ -1,7 +1,13 @@
 <template>
   <div class="task-list">
     <Header>
-      <v-btn small color="green darken-1" elevation="0" class="white--text">
+      <v-btn
+        small
+        color="green darken-1"
+        elevation="0"
+        class="white--text"
+        :to="testRegisterRoute"
+      >
         Adicionar tarefa
       </v-btn>
     </Header>
@@ -34,7 +40,12 @@
             <v-icon small @click="deleteItem(item)"> mdi-delete </v-icon>
           </template>
         </v-data-table>
-        <v-btn color="green darken-1 mt-6" elevation="0" class="white--text">
+        <v-btn
+          color="green darken-1 mt-6"
+          elevation="0"
+          class="white--text"
+          :to="testRegisterRoute"
+        >
           Adicionar tarefa
         </v-btn>
       </div>
