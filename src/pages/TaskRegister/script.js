@@ -60,7 +60,12 @@ export default {
       this.save()
         .then((response) => {
           if (response?.status === 201 && response?.statusText === "Created") {
-            console.log("Task saved");
+            this.$router.push({
+              name: "TaskList",
+              params: {
+                id: this.$route.params.id,
+              },
+            });
           }
         })
         .catch((err) => console.error(err));
