@@ -30,9 +30,9 @@
             color="blue-grey"
             class="white--text"
             elevation="0"
-            to="/usability-test/list"
+            :to="taskListRoute"
           >
-            Voltar ao teste
+            Ver tarefas
           </v-btn>
         </v-col>
       </v-row>

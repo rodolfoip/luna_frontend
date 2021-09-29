@@ -16,6 +16,12 @@ export default {
         order: null,
         description: null,
       },
+      taskListRoute: {
+        name: "TaskList",
+        params: {
+          id: this.$route.params.id,
+        },
+      },
     };
   },
 
@@ -60,12 +66,7 @@ export default {
       this.save()
         .then((response) => {
           if (response?.status === 201 && response?.statusText === "Created") {
-            this.$router.push({
-              name: "TaskList",
-              params: {
-                id: this.$route.params.id,
-              },
-            });
+            this.$router.push(this.taskListRoute);
           }
         })
         .catch((err) => console.error(err));
