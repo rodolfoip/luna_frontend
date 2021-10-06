@@ -7,3 +7,7 @@ export const registerTask = ({ testId, order, description }) => {
     description,
   });
 };
+
+export const deleteTask = (task) => {
+  return API.delete("/usability-test/task", { data: task });
+};

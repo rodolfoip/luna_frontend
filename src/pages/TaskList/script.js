@@ -1,7 +1,8 @@
 import { mapGetters } from "vuex";
 
-import Header from "../../components/Header";
-import { getTestById } from "../../services/test";
+import Header from "@/components/Header";
+import { getTestById } from "@/services/test";
+import { deleteTask } from "@/services/task";
 
 export default {
   name: "TestList",
@@ -14,6 +15,9 @@ export default {
     ...mapGetters({
       testSelected: "test/testSelected",
     }),
+    testId() {
+      return this.$route.params.id;
+    },
   },
 
   data() {
@@ -29,7 +33,7 @@ export default {
       testRegisterRoute: {
         name: "TaskRegister",
         params: {
-          id: this.$route.params.id,
+          id: this.testId,
         },
       },
     };
@@ -44,7 +48,7 @@ export default {
       if (this.testSelected) {
         this.items = this.testSelected.tasks;
       } else {
-        getTestById(this.$route.params.id).then((response) => {
+        getTestById(this.testId).then((response) => {
           const { data } = response;
           this.items = data.usabilityTest.tasks;
         });
@@ -57,7 +61,16 @@ export default {
       console.log(item);
     },
     deleteItem(item) {
-      console.log(item);
+      deleteTask({ testId: this.testId, order: item.order })
+        .then(() => {
+          console.log("success");
+        })
+        .catch(({ response }) => {
+          console.error(response);
+        })
+        .finally(() => {
+          this.loadTasks();
+        });
     },
   },
 };
