@@ -61,6 +61,9 @@ export default {
     isEditPage() {
       return this.$route.name === "TestEdit";
     },
+    testName() {
+      return this.form.name ? this.form.name : "Teste XXX";
+    },
   },
 
   methods: {
