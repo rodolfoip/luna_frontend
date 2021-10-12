@@ -1,12 +1,18 @@
 import { required, minLength, numeric } from "vuelidate/lib/validators";
 import Header from "../../components/Header";
-import { registerTask } from "@/services";
+import { registerTask, getTestById, updateTask } from "@/services";
 
 export default {
   name: "TaskRegister",
 
   components: {
     Header,
+  },
+
+  mounted() {
+    if (this.isEditPage) {
+      this.loadTask();
+    }
   },
 
   data() {
@@ -42,9 +48,22 @@ export default {
         errors.push("Descrição é obrigatório");
       return errors;
     },
+    isEditPage() {
+      return this.$route.name === "TaskEdit";
+    },
   },
 
   methods: {
+    loadTask() {
+      getTestById(this.$route.params.id).then((response) => {
+        const { data } = response;
+        data.usabilityTest.tasks.map((task) => {
+          if (String(this.$route.params.order) === String(task.order)) {
+            this.form = { ...task };
+          }
+        });
+      });
+    },
     async save() {
       this.$v.$touch();
       if (this.$v.$error && this.$v.$invalid) {
@@ -62,20 +81,66 @@ export default {
       }
     },
 
-    registerTask() {
-      this.save()
-        .then((response) => {
-          if (response?.status === 201 && response?.statusText === "Created") {
-            this.$router.push(this.taskListRoute);
+    async update() {
+      this.$v.$touch();
+      if (this.$v.$error && this.$v.$invalid) {
+        return;
+      }
+
+      try {
+        return await updateTask({
+          testId: this.$route.params.id,
+          order: this.$route.params.order,
+          newOrder: this.form.order,
+          description: this.form.description,
+        });
+      } catch (err) {
+        return err;
+      }
+    },
+
+    saveTask() {
+      if (!this.isEditPage) {
+        this.save()
+          .then((response) => {
+            if (
+              response?.status === 201 &&
+              response?.statusText === "Created"
+            ) {
+              console.log("Sucesso");
+            }
+          })
+          .catch((err) => console.error(err));
+      } else {
+        this.update().then((response) => {
+          if (response?.status === 204) {
+            console.log("Sucesso");
           }
-        })
-        .catch((err) => console.error(err));
+        });
+      }
+      this.$router.push(this.taskListRoute);
     },
 
     addNewTask() {
-      this.save()
-        .then((response) => {
-          if (response?.status === 201 && response?.statusText === "Created") {
+      if (!this.isEditPage) {
+        this.save()
+          .then((response) => {
+            if (
+              response?.status === 201 &&
+              response?.statusText === "Created"
+            ) {
+              this.form = {
+                testId: null,
+                order: null,
+                description: null,
+              };
+              this.$v.$reset();
+            }
+          })
+          .catch((err) => console.error(err));
+      } else {
+        this.update().then((response) => {
+          if (response?.status === 204) {
             this.form = {
               testId: null,
               order: null,
@@ -83,8 +148,8 @@ export default {
             };
             this.$v.$reset();
           }
-        })
-        .catch((err) => console.error(err));
+        });
+      }
     },
   },
 

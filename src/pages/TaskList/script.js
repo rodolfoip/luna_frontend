@@ -65,7 +65,10 @@ export default {
       }
     },
     editItem(item) {
-      console.log(item);
+      this.$router.push({
+        name: "TaskEdit",
+        params: { id: this.testId, order: item.order },
+      });
     },
     deleteItem(item) {
       deleteTask({ testId: this.testId, order: item.order })

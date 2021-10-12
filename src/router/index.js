@@ -69,6 +69,11 @@ const routes = [
     component: TaskRegister,
   },
   {
+    path: "/usability-test/:id/task/edit/:order",
+    name: "TaskEdit",
+    component: TaskRegister,
+  },
+  {
     path: "/usability-test/:id/task/list",
     name: "TaskList",
     component: TaskList,
