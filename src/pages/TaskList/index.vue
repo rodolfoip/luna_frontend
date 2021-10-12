@@ -12,9 +12,18 @@
         color="green darken-1"
         elevation="0"
         class="white--text"
-        :to="testRegisterRoute"
+        :to="taskRegisterRoute"
       >
         Adicionar tarefa
+      </v-btn>
+      <v-btn
+        small
+        color="blue-grey"
+        elevation="0"
+        class="white--text ml-4"
+        to="/usability-test/list"
+      >
+        Ver testes
       </v-btn>
     </Header>
     <v-container>
@@ -49,7 +58,7 @@
           color="green darken-1 mt-6"
           elevation="0"
           class="white--text"
-          :to="testRegisterRoute"
+          :to="taskRegisterRoute"
         >
           Adicionar tarefa
         </v-btn>

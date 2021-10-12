@@ -20,7 +20,7 @@ export default {
     testId() {
       return this.$route.params.id;
     },
-    testRegisterRoute() {
+    taskRegisterRoute() {
       return {
         name: "TaskRegister",
         params: {
