@@ -1,6 +1,7 @@
 import { mapGetters } from "vuex";
 
 import Header from "@/components/Header";
+import Notification from "@/components/Notification";
 import { getTestById } from "@/services/test";
 import { deleteTask } from "@/services/task";
 
@@ -9,6 +10,7 @@ export default {
 
   components: {
     Header,
+    Notification,
   },
 
   computed: {
@@ -35,6 +37,12 @@ export default {
         params: {
           id: this.testId,
         },
+      },
+      alertConfig: {
+        show: false,
+        timeout: 2000,
+        type: "success",
+        text: "Tarefa excluída com sucesso",
       },
     };
   },
@@ -63,13 +71,18 @@ export default {
     deleteItem(item) {
       deleteTask({ testId: this.testId, order: item.order })
         .then(() => {
-          console.log("success");
+          this.alertConfig.show = true;
         })
         .catch(({ response }) => {
-          console.error(response);
+          this.alertConfig.text = response.data.error;
+          this.alertConfig.type = "red accent-4";
+          this.alertConfig.show = true;
         })
         .finally(() => {
-          this.loadTasks();
+          getTestById(this.testId).then((response) => {
+            const { data } = response;
+            this.items = data.usabilityTest.tasks;
+          });
         });
     },
   },

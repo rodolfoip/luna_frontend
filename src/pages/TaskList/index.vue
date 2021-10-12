@@ -1,5 +1,11 @@
 <template>
   <div class="task-list">
+    <Notification
+      :show="alertConfig.show"
+      :type="alertConfig.type"
+      :text="alertConfig.text"
+      @hide-notification="() => (alertConfig.show = false)"
+    />
     <Header>
       <v-btn
         small
