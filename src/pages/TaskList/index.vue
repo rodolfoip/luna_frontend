@@ -28,7 +28,7 @@
     </Header>
     <v-container>
       <div class="task-list__content">
-        <h2 class="task-list__title">Lista de testes</h2>
+        <h2 class="task-list__title">Lista de tarefas</h2>
         <v-data-table
           :headers="headers"
           :items="items"
