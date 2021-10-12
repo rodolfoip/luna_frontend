@@ -1,14 +1,11 @@
 <template>
   <div class="test-list">
-    <v-snackbar
-      v-model="alertConfig.show"
-      :timeout="alertConfig.timeout"
-      right
-      top
-      :color="alertConfig.type"
-    >
-      {{ alertConfig.text }}
-    </v-snackbar>
+    <Notification
+      :show="alertConfig.show"
+      :type="alertConfig.type"
+      :text="alertConfig.text"
+      @hide-notification="() => (alertConfig.show = false)"
+    />
     <Header>
       <v-row class="flex-fill">
         <v-col cols="flex-fill">
