@@ -29,7 +29,6 @@
           :expanded.sync="expanded"
           item-key="order"
           show-expand
-          @click:row="openItem"
         >
           <template v-slot:expanded-item="{ headers, item }">
             <td :colspan="headers.length">

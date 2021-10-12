@@ -20,6 +20,14 @@ export default {
     testId() {
       return this.$route.params.id;
     },
+    testRegisterRoute() {
+      return {
+        name: "TaskRegister",
+        params: {
+          id: this.testId,
+        },
+      };
+    },
   },
 
   data() {
@@ -32,12 +40,6 @@ export default {
         { text: "Ações", value: "actions", sortable: false },
       ],
       items: [],
-      testRegisterRoute: {
-        name: "TaskRegister",
-        params: {
-          id: this.testId,
-        },
-      },
       alertConfig: {
         show: false,
         timeout: 2000,
@@ -61,9 +63,6 @@ export default {
           this.items = data.usabilityTest.tasks;
         });
       }
-    },
-    openItem(item) {
-      console.log(item);
     },
     editItem(item) {
       console.log(item);
