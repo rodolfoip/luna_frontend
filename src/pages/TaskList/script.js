@@ -2,8 +2,8 @@ import { mapGetters } from "vuex";
 
 import Header from "@/components/Header";
 import Notification from "@/components/Notification";
-import { getTestById } from "@/services/test";
-import { deleteTask } from "@/services/task";
+import { getTestById, deleteTask } from "@/services";
+import { test } from "@/mixins/Test";
 
 export default {
   name: "TestList",
@@ -13,13 +13,12 @@ export default {
     Notification,
   },
 
+  mixins: [test],
+
   computed: {
     ...mapGetters({
       testSelected: "test/testSelected",
     }),
-    testId() {
-      return this.$route.params.id;
-    },
     taskRegisterRoute() {
       return {
         name: "TaskRegister",
@@ -54,16 +53,6 @@ export default {
   },
 
   methods: {
-    loadTasks() {
-      if (this.testSelected) {
-        this.items = this.testSelected.tasks;
-      } else {
-        getTestById(this.testId).then((response) => {
-          const { data } = response;
-          this.items = data.usabilityTest.tasks;
-        });
-      }
-    },
     editItem(item) {
       this.$router.push({
         name: "TaskEdit",
