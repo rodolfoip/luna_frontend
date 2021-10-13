@@ -26,7 +26,6 @@
           :items="items"
           :items-per-page="5"
           class="elevation-1"
-          @click:row="openItem"
         >
           <template v-slot:item.affectGrid="{ item }">
             <v-btn
@@ -34,14 +33,9 @@
               x-small
               color="primary"
               @click.stop="showAffectGrid(item.affectGrid)"
-              >Visualizar</v-btn
             >
-          </template>
-          <template v-slot:item.actions="{ item }">
-            <v-icon small class="mr-2" @click="editItem(item)">
-              mdi-pencil
-            </v-icon>
-            <v-icon small @click="deleteItem(item)"> mdi-delete </v-icon>
+              Visualizar
+            </v-btn>
           </template>
         </v-data-table>
         <AffectGridModal

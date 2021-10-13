@@ -43,18 +43,6 @@ export default {
   },
 
   methods: {
-    openItem(item) {
-      console.log(item);
-    },
-
-    editItem(item) {
-      console.log(item);
-    },
-
-    deleteItem(item) {
-      console.log(item);
-    },
-
     showAffectGrid(posInMatriz) {
       this.affectGrid.posInMatriz = posInMatriz;
       this.affectGrid.modal = true;
