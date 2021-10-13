@@ -50,14 +50,14 @@ export default {
         this.$data.items = data.list;
       });
     },
-    openItem(item) {
+    openResults(item) {
+      this.$router.push({ name: "TestResults", params: { id: item._id } });
+    },
+    editItem(item) {
       this.$store.dispatch({
         type: "test/setTest",
         value: item,
       });
-      this.$router.push({ name: "TaskList", params: { id: item._id } });
-    },
-    editItem(item) {
       this.$router.push({ name: "TestEdit", params: { id: item._id } });
     },
     deleteItem(item) {

@@ -34,7 +34,7 @@
           :items="listTests"
           :items-per-page="5"
           class="elevation-1"
-          @click:row="openItem"
+          @click:row="openResults"
         >
           <template v-slot:item.realized="{ item }">
             <v-chip
