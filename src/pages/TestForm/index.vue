@@ -9,6 +9,15 @@
         <v-col cols="auto">
           <v-btn
             small
+            color="blue-grey"
+            elevation="0"
+            class="mr-6 white--text"
+            to="/usability-test/list"
+          >
+            Voltar
+          </v-btn>
+          <v-btn
+            small
             color="green darken-1"
             elevation="0"
             class="mr-6 white--text"
