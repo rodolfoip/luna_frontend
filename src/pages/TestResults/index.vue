@@ -23,7 +23,7 @@
         <h2 class="test-results__title">Resultados do teste XXX</h2>
         <v-data-table
           :headers="headers"
-          :items="items"
+          :items="tasks"
           :items-per-page="5"
           class="elevation-1"
         >
