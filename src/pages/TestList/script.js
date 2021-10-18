@@ -50,8 +50,8 @@ export default {
         this.$data.items = data.list;
       });
     },
-    openResults(item) {
-      this.$router.push({ name: "TestResults", params: { id: item._id } });
+    openTaskList(item) {
+      this.$router.push({ name: "TaskList", params: { id: item._id } });
     },
     editItem(item) {
       this.$store.dispatch({
