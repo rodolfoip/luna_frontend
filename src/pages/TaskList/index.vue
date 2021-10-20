@@ -23,7 +23,7 @@
         class="white--text ml-4"
         to="/usability-test/list"
       >
-        Ver testes
+        Voltar
       </v-btn>
     </Header>
     <v-container>
