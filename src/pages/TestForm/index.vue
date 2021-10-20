@@ -46,7 +46,7 @@
               @blur="$v.form.name.$touch()"
             ></v-text-field>
             <v-text-field
-              v-if="!isEditPage"
+              :disabled="isEditPage"
               label="Código de acesso ao teste"
               placeholder="Código"
               outlined
