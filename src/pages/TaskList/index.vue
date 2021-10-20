@@ -31,7 +31,7 @@
         <h2 class="task-list__title">Lista de tarefas</h2>
         <v-data-table
           :headers="headers"
-          :items="items"
+          :items="tasks"
           :items-per-page="5"
           class="elevation-1"
           :single-expand="singleExpand"
@@ -61,6 +61,16 @@
           :to="taskRegisterRoute"
         >
           Adicionar tarefa
+        </v-btn>
+        <v-btn
+          v-if="testSelected"
+          color="blue-grey"
+          elevation="0"
+          class="white--text mt-6 ml-6"
+          :disabled="!testSelected.realized"
+          :to="taskResultsRoute"
+        >
+          Ver resultados
         </v-btn>
       </div>
     </v-container>

@@ -1,5 +1,3 @@
-import { mapGetters } from "vuex";
-
 import Header from "@/components/Header";
 import Notification from "@/components/Notification";
 import { getTestById, deleteTask } from "@/services";
@@ -16,12 +14,17 @@ export default {
   mixins: [test],
 
   computed: {
-    ...mapGetters({
-      testSelected: "test/testSelected",
-    }),
     taskRegisterRoute() {
       return {
         name: "TaskRegister",
+        params: {
+          id: this.testId,
+        },
+      };
+    },
+    taskResultsRoute() {
+      return {
+        name: "TestResults",
         params: {
           id: this.testId,
         },
@@ -46,10 +49,6 @@ export default {
         text: "Tarefa excluída com sucesso",
       },
     };
-  },
-
-  mounted() {
-    this.loadTasks();
   },
 
   methods: {
