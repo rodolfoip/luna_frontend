@@ -32,7 +32,7 @@
             elevation="0"
             :to="taskListRoute"
           >
-            Ver tarefas
+            Voltar
           </v-btn>
         </v-col>
       </v-row>
