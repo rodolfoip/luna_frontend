@@ -20,6 +20,7 @@ export default {
       },
       headers: [
         { text: "Nome", align: "start", value: "name" },
+        { text: "Código", align: "start", value: "accessCode" },
         { text: "Realizado?", value: "realized" },
         { text: "Qtd realizados", value: "quantity" },
         { text: "Ações", value: "actions", sortable: false },
