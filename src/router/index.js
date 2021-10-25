@@ -54,7 +54,7 @@ const routes = [
     component: TestList,
   },
   {
-    path: "/usability-test/:id/init",
+    path: "/participant/test/:id/init",
     name: "TestInit",
     component: TestInit,
   },
@@ -79,22 +79,22 @@ const routes = [
     component: TaskList,
   },
   {
-    path: "/usability-test/:id/task/init/:order",
+    path: "/participant/test/:id/task/init/:order",
     name: "TaskInit",
     component: TaskInit,
   },
   {
-    path: "/usability-test/:id/task/sus",
+    path: "/participant/test/:id/task/sus",
     name: "TaskForm",
     component: TaskForm,
   },
   {
-    path: "/usability-test/:id/task/affect-grid",
+    path: "/participant/test/:id/task/affect-grid",
     name: "TaskAffectGrid",
     component: TaskAffectGrid,
   },
   {
-    path: "/usability-test/:id/task/:order",
+    path: "/participant/test/:id/task/:order",
     name: "Task",
     component: Task,
   },

@@ -1,3 +1,5 @@
+import { loginByAccessCode } from "@/services";
+
 export default {
   name: "ParticipantLogin",
 
@@ -9,8 +11,20 @@ export default {
 
   methods: {
     initTest() {
-      // TODO - Validate access code and init test
-      this.$router.push("/usability-test/init");
+      loginByAccessCode(this.accessCode)
+        .then((response) => {
+          const { data } = response;
+
+          this.$router.push({
+            name: "TestInit",
+            params: {
+              id: data.usabilityTest._id,
+            },
+          });
+        })
+        .catch((err) => {
+          console.error(err);
+        });
     },
   },
 };
