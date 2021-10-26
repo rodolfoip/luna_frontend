@@ -21,6 +21,11 @@ export default {
               id: data.usabilityTest._id,
             },
           });
+
+          this.$store.dispatch({
+            type: "test/setTest",
+            value: data.usabilityTest,
+          });
         })
         .catch((err) => {
           console.error(err);

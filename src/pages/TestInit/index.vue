@@ -6,15 +6,15 @@
           <div class="header__title">Teste XXX</div>
         </v-col>
         <v-col cols="auto">
-          <v-btn small color="info" elevation="0">Sair</v-btn>
+          <v-btn small color="info" elevation="0" to="/">Sair</v-btn>
         </v-col>
       </v-row>
     </Header>
     <v-container>
-      <v-row>
+      <v-row v-if="testSelected">
         <v-col cols="8" offset="2">
           <div class="test-init__content">
-            <h2 class="test-init__title">Teste XXX</h2>
+            <h2 class="test-init__title">Teste: {{ testSelected.name }}</h2>
             <div class="test-init__description">
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a
@@ -26,20 +26,16 @@
                 disponibilizado abaixo:
               </p>
               <a
-                href="https://docs.google.com/forms/u/0/"
                 target="_blank"
                 rel="noopener noreferrer"
+                :href="testSelected.externalLink"
               >
                 Questionário de perfil
               </a>
             </div>
           </div>
           <div class="test-init__action">
-            <v-btn
-              color="green white--text"
-              elevation="0"
-              to="/usability-test/task/init"
-            >
+            <v-btn color="green white--text" elevation="0" :to="taskInitRoute">
               Iniciar
             </v-btn>
           </div>
