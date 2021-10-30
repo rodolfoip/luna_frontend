@@ -1,4 +1,5 @@
 import Header from "@/components/Header";
+import { test } from "@/mixins/Test";
 
 export default {
   name: "TaskInit",
@@ -7,10 +8,22 @@ export default {
     Header,
   },
 
+  mixins: [test],
+
+  computed: {
+    taskOrder() {
+      return this.$route.params.order;
+    },
+    actualTask() {
+      return this.tasks.find((task) => {
+        return task.order === this.taskOrder;
+      });
+    },
+  },
+
   methods: {
     initTest() {
-      const orderParam = this.$route.params.order;
-      this.$router.push({ name: "Task", params: { order: orderParam } });
+      this.$router.push({ name: "Task", params: { order: this.taskOrder } });
     },
   },
 };

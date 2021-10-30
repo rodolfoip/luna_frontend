@@ -3,8 +3,8 @@
     <Header>
       <v-row justify="space-between">
         <v-col cols="auto d-flex align-center">
-          <div class="header__title">Teste XXX</div>
-          <div class="header__subtitle">Tarefa-1</div>
+          <div class="header__title">Teste: {{ testSelected.name }}</div>
+          <div class="header__subtitle">Tarefa-{{ taskOrder }}</div>
         </v-col>
         <v-col cols="auto">
           <v-btn small color="info" elevation="0">Sair</v-btn>
@@ -14,26 +14,11 @@
     <v-container>
       <v-row>
         <v-col cols="8" offset="2">
-          <div class="task-init__content">
-            <h2 class="task-init__title">Tarefa 1</h2>
+          <div class="task-init__content" v-if="actualTask">
+            <h2 class="task-init__title">Tarefa {{ taskOrder }}</h2>
             <div class="task-init__description">
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a
-                purus varius, malesuada sapien non, semper nibh. Nunc sodales
-                velit id posuere condimentum. Integer eget sollicitudin turpis.
-                In pellentesque lectus sit amet orci tempus gravida. Suspendisse
-                quis cursus velit. Donec non nisl at risus pretium consequat.
-                Sed aliquet lacus vitae euismod venenatis. Nullam a cursus
-                metus.
-              </p>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a
-                purus varius, malesuada sapien non, semper nibh. Nunc sodales
-                velit id posuere condimentum. Integer eget sollicitudin turpis.
-                In pellentesque lectus sit amet orci tempus gravida. Suspendisse
-                quis cursus velit. Donec non nisl at risus pretium consequat.
-                Sed aliquet lacus vitae euismod venenatis. Nullam a cursus
-                metus.
+                {{ actualTask.description }}
               </p>
             </div>
           </div>
