@@ -102,6 +102,8 @@ export default {
           name: this.form.name,
           externalLink: this.form.externalLink,
           prototypeLink: this.form.prototypeLink,
+          tasks: this.form.tasks,
+          quantity: this.form.quantity,
         });
       } catch (err) {
         return err;
