@@ -1,5 +1,20 @@
+import { test } from "@/mixins/Test";
+
 export default {
   name: "Task",
+
+  mixins: [test],
+
+  computed: {
+    taskOrder() {
+      return this.$route.params.order;
+    },
+    actualTask() {
+      return this.tasks.find((task) => {
+        return Number(task.order) === Number(this.taskOrder);
+      });
+    },
+  },
 
   data() {
     return {
@@ -11,13 +26,12 @@ export default {
     };
   },
 
-  mounted() {
-    this.prototypeIframe = document.getElementById("show-iframe");
-    const deviceHeight = document.documentElement.clientHeight;
-    this.prototypeIframe.style.height = Number(deviceHeight) + 100 + "px";
-  },
-
   methods: {
+    onLoadTask() {
+      this.prototypeIframe = document.getElementById("show-iframe");
+      const deviceHeight = document.documentElement.clientHeight;
+      this.prototypeIframe.style.height = Number(deviceHeight) + 100 + "px";
+    },
     onLoadPrototype() {
       this.initDate = Date.now();
       const $this = this;
