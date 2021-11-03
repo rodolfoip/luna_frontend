@@ -1,5 +1,5 @@
 <template>
-  <div class="test-init">
+  <div class="test-init" v-if="testSelected">
     <Header>
       <v-row justify="space-between">
         <v-col cols="auto d-flex align-center">
