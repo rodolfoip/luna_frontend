@@ -23,6 +23,7 @@ export default {
       finishDate: "",
       clicks: 0,
       prototypeIframe: null,
+      aborted: false,
     };
   },
 
@@ -51,11 +52,20 @@ export default {
     },
 
     abort() {
-      console.log("abort");
+      this.aborted = true;
+      this.finish();
     },
 
     finish() {
       this.finishDate = Date.now();
+      this.susFormPage();
+    },
+    susFormPage() {
+      this.$router.push({
+        name: "TaskForm",
+        id: this.testId,
+        order: this.taskOrder,
+      });
     },
   },
 };

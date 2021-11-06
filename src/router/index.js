@@ -84,7 +84,7 @@ const routes = [
     component: TaskInit,
   },
   {
-    path: "/participant/test/:id/task/sus",
+    path: "/participant/test/:id/task/:order/sus",
     name: "TaskForm",
     component: TaskForm,
   },
