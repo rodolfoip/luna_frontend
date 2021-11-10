@@ -1,4 +1,6 @@
 import { test } from "@/mixins/Test";
+import dayjs from "dayjs";
+import { registerResult } from "@/services";
 
 export default {
   name: "Task",
@@ -34,7 +36,7 @@ export default {
       this.prototypeIframe.style.height = Number(deviceHeight) + 100 + "px";
     },
     onLoadPrototype() {
-      this.initDate = Date.now();
+      this.initDate = dayjs();
       const $this = this;
       focus();
       addEventListener("blur", function () {
@@ -57,14 +59,23 @@ export default {
     },
 
     finish() {
-      this.finishDate = Date.now();
-      this.susFormPage();
+      this.finishDate = dayjs();
+      const diffTimeTask = this.finishDate.diff(this.initDate);
+      registerResult({
+        testId: this.testId,
+        orderTask: this.taskOrder,
+        timeTask: dayjs(diffTimeTask).format("mm:ss"),
+        aborted: this.aborted,
+        clicks: this.clicks,
+      }).then((response) => {
+        const { data } = response;
+        this.susFormPage(data.result._id);
+      });
     },
-    susFormPage() {
+    susFormPage(resultId) {
       this.$router.push({
         name: "TaskForm",
-        id: this.testId,
-        order: this.taskOrder,
+        id: resultId,
       });
     },
   },
