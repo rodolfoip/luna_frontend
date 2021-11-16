@@ -1,6 +1,5 @@
 import { required } from "vuelidate/lib/validators";
 import Header from "@/components/Header";
-import { getResultById } from "@/services";
 
 export default {
   name: "TaskForm",
@@ -13,10 +12,6 @@ export default {
     resultId() {
       return this.$route.params.id;
     },
-  },
-
-  mounted() {
-    // this.getResult();
   },
 
   data() {
@@ -71,11 +66,6 @@ export default {
   },
 
   methods: {
-    getResult() {
-      getResultById(this.resultId).then((response) => {
-        console.log(response);
-      });
-    },
     saveSusForm() {
       this.$v.$touch();
       if (this.$v.$error && this.$v.$invalid) {
