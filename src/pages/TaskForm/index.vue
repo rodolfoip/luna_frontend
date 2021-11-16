@@ -7,7 +7,13 @@
           <div class="header__subtitle">Questionário SUS</div>
         </v-col>
         <v-col cols="auto">
-          <v-btn small color="green white--text" elevation="0">Finalizar</v-btn>
+          <v-btn
+            small
+            color="green white--text"
+            elevation="0"
+            @click="saveSusForm"
+            >Finalizar</v-btn
+          >
         </v-col>
       </v-row>
     </Header>
@@ -24,21 +30,39 @@
             <v-form>
               <fieldset
                 class="form-group"
-                v-for="(question, index) in formQuestions"
+                v-for="(question, index) in $v.formQuestions.$each.$iter"
                 :key="index"
               >
                 <h4 class="form-group__label">
-                  {{ index + 1 }} - {{ question.label }}
+                  {{ ++index }} - {{ question.$model.label }}
                 </h4>
-                <v-radio-group v-model="question.answer" row class="mt-1">
+                <v-radio-group
+                  v-model="question.answer.$model"
+                  row
+                  class="mt-1"
+                  :error="question.$error"
+                  :error-messages="question.$error ? 'Campo obrigatório' : ''"
+                >
                   <v-radio
                     v-for="n in 5"
                     :key="n"
                     :label="`${n}`"
                     :value="n"
                   ></v-radio>
+                  <template v-slot:message="{ message }">
+                    <div class="error-text mb-3">
+                      {{ message }}
+                    </div>
+                  </template>
                 </v-radio-group>
               </fieldset>
+              <v-btn
+                class="mt-4"
+                color="green white--text"
+                elevation="0"
+                @click="saveSusForm"
+                >Finalizar</v-btn
+              >
             </v-form>
           </v-col>
         </v-row>

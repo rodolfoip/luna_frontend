@@ -1,10 +1,22 @@
+import { required } from "vuelidate/lib/validators";
 import Header from "@/components/Header";
+import { getResultById } from "@/services";
 
 export default {
   name: "TaskForm",
 
   components: {
     Header,
+  },
+
+  computed: {
+    resultId() {
+      return this.$route.params.id;
+    },
+  },
+
+  mounted() {
+    // this.getResult();
   },
 
   data() {
@@ -56,5 +68,45 @@ export default {
         },
       ],
     };
+  },
+
+  methods: {
+    getResult() {
+      getResultById(this.resultId).then((response) => {
+        console.log(response);
+      });
+    },
+    saveSusForm() {
+      this.$v.$touch();
+      if (this.$v.$error && this.$v.$invalid) {
+        return;
+      }
+      let even = 0;
+      let odd = 0;
+      this.formQuestions.map((question, index) => {
+        const questionNumber = index + 1;
+        if (questionNumber % 2 === 0) {
+          even = even + question.answer;
+        } else {
+          odd = odd + question.answer;
+        }
+      });
+      odd = odd - 5;
+      even = 25 - even;
+      let susScore = odd + even;
+      susScore = susScore * 2.5;
+      console.log("sus", susScore);
+    },
+  },
+
+  validations: {
+    formQuestions: {
+      required,
+      $each: {
+        answer: {
+          required,
+        },
+      },
+    },
   },
 };
