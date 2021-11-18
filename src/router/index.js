@@ -89,7 +89,7 @@ const routes = [
     component: TaskForm,
   },
   {
-    path: "/participant/test/:id/task/affect-grid",
+    path: "/participant/test/:id/affect-grid",
     name: "TaskAffectGrid",
     component: TaskAffectGrid,
   },

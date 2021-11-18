@@ -16,19 +16,13 @@ export const registerResult = ({
   });
 };
 
-export const updateTask = ({
-  testId,
-  order,
-  newOrder,
-  description,
-  sus,
-  affectGrid,
-}) => {
-  return API.put("/usability-test/task", {
-    testId,
-    order,
-    newOrder,
-    description,
+export const getResultById = (id) => {
+  return API.get(`/result/${id}`);
+};
+
+export const updateResult = ({ _id, sus, affectGrid }) => {
+  return API.put("/result", {
+    _id,
     sus,
     affectGrid,
   });

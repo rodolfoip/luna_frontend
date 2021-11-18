@@ -1,5 +1,6 @@
 import { required } from "vuelidate/lib/validators";
 import Header from "@/components/Header";
+import { updateResult } from "@/services";
 
 export default {
   name: "TaskForm",
@@ -71,8 +72,23 @@ export default {
       if (this.$v.$error && this.$v.$invalid) {
         return;
       }
+
+      const susScore = this.calculateSusScore();
+
+      updateResult({
+        _id: this.resultId,
+        sus: susScore,
+      }).then((response) => {
+        const { data } = response;
+        console.log(data);
+        this.affectGridPage(data.result._id);
+      });
+    },
+
+    calculateSusScore() {
       let even = 0;
       let odd = 0;
+
       this.formQuestions.map((question, index) => {
         const questionNumber = index + 1;
         if (questionNumber % 2 === 0) {
@@ -81,11 +97,20 @@ export default {
           odd = odd + question.answer;
         }
       });
+
       odd = odd - 5;
       even = 25 - even;
       let susScore = odd + even;
       susScore = susScore * 2.5;
-      console.log("sus", susScore);
+
+      return susScore;
+    },
+
+    affectGridPage(resultId) {
+      this.$router.push({
+        name: "TaskAffectGrid",
+        id: resultId,
+      });
     },
   },
 
