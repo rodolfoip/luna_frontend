@@ -66,6 +66,7 @@ export default {
             type: "success",
             text: "Affect Grid salvo com sucesso",
           };
+          this.$router.push("/");
         })
         .catch((err) => {
           console.error(err);
