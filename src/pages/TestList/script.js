@@ -75,5 +75,12 @@ export default {
           this.getTestList();
         });
     },
+    logout() {
+      this.$store.dispatch({
+        type: "user/clearUserData",
+      });
+
+      this.$router.push("/");
+    },
   },
 };

@@ -15,6 +15,8 @@ import TaskForm from "../pages/TaskForm";
 import TaskAffectGrid from "../pages/TaskAffectGrid";
 import Task from "../pages/Task";
 
+import checkUserLogged from "./checkUserlogged";
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -42,41 +44,48 @@ const routes = [
     path: "/usability-test/register",
     name: "TestRegister",
     component: TestForm,
+    beforeEnter: checkUserLogged,
   },
   {
     path: "/usability-test/:id/edit",
     name: "TestEdit",
     component: TestForm,
+    beforeEnter: checkUserLogged,
   },
   {
     path: "/usability-test/list",
     name: "TestList",
     component: TestList,
-  },
-  {
-    path: "/participant/test/:id/init",
-    name: "TestInit",
-    component: TestInit,
+    beforeEnter: checkUserLogged,
   },
   {
     path: "/usability-test/:id/results",
     name: "TestResults",
     component: TestResults,
+    beforeEnter: checkUserLogged,
   },
   {
     path: "/usability-test/:id/task/register",
     name: "TaskRegister",
     component: TaskRegister,
+    beforeEnter: checkUserLogged,
   },
   {
     path: "/usability-test/:id/task/edit/:order",
     name: "TaskEdit",
     component: TaskRegister,
+    beforeEnter: checkUserLogged,
   },
   {
     path: "/usability-test/:id/task/list",
     name: "TaskList",
     component: TaskList,
+    beforeEnter: checkUserLogged,
+  },
+  {
+    path: "/participant/test/:id/init",
+    name: "TestInit",
+    component: TestInit,
   },
   {
     path: "/participant/test/:id/task/init/:order",

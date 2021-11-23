@@ -20,7 +20,12 @@
           </v-btn>
         </v-col>
         <v-col cols="auto">
-          <v-btn small color="blue-grey" class="white--text ml-auto" to="/">
+          <v-btn
+            small
+            color="blue-grey"
+            class="white--text ml-auto"
+            @click="logout"
+          >
             Sair da conta
           </v-btn>
         </v-col>
