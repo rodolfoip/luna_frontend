@@ -1,5 +1,11 @@
 <template>
   <div class="task-affect-grid">
+    <Notification
+      :show="alertConfig.show"
+      :type="alertConfig.type"
+      :text="alertConfig.text"
+      @hide-notification="() => (alertConfig.show = false)"
+    />
     <Header>
       <v-row justify="space-between">
         <v-col cols="auto d-flex align-center">
@@ -7,7 +13,14 @@
           <div class="header__subtitle">Preencha o AffectGrid</div>
         </v-col>
         <v-col cols="auto">
-          <v-btn small color="green white--text" elevation="0">Finalizar</v-btn>
+          <v-btn
+            small
+            color="green white--text"
+            elevation="0"
+            @click="saveAffectGrid"
+          >
+            Finalizar
+          </v-btn>
         </v-col>
       </v-row>
     </Header>
