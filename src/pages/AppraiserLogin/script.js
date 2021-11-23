@@ -56,6 +56,11 @@ export default {
           value: data.accessToken,
         });
 
+        this.$store.dispatch({
+          type: "user/setUserId",
+          value: data._id,
+        });
+
         this.$router.push("/usability-test/list");
       } catch (err) {
         const { status } = err.response;
