@@ -49,7 +49,7 @@ export default {
           email: this.email,
           password: this.password,
         });
-        const { data } = payload;
+        const { data } = payload.data;
 
         this.$store.dispatch({
           type: "user/setAccessToken",
@@ -63,9 +63,12 @@ export default {
 
         this.$router.push("/usability-test/list");
       } catch (err) {
-        const { status } = err.response;
+        const { status, data } = err.response;
         if (status === 401) {
           this.alertConfig.text = "Verifique os campos ou faça um cadastro";
+          this.alertConfig.show = true;
+        } else {
+          this.alertConfig.text = data.error;
           this.alertConfig.show = true;
         }
       }

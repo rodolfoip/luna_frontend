@@ -13,6 +13,10 @@ export const user = {
     setUserId(state, payload) {
       state.userId = payload;
     },
+    clearUserData(state) {
+      state.accessToken = null;
+      state.userId = null;
+    },
   },
 
   actions: {
@@ -21,6 +25,9 @@ export const user = {
     },
     setUserId({ commit }, payload) {
       commit("setUserId", payload.value);
+    },
+    clearUserData({ commit }) {
+      commit("clearUserData");
     },
   },
 

@@ -1,5 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import createPersistedState from "vuex-persistedstate";
 
 import { user } from "./modules/user";
 import { test } from "./modules/test";
@@ -7,8 +8,6 @@ import { test } from "./modules/test";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  state: {},
-  mutations: {},
-  actions: {},
+  plugins: [createPersistedState()],
   modules: { user, test },
 });
