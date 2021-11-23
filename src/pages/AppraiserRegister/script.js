@@ -1,8 +1,13 @@
 import { required, email, minLength, sameAs } from "vuelidate/lib/validators";
 import { register } from "@/services";
+import Notification from "@/components/Notification";
 
 export default {
   name: "AppraiserRegister",
+
+  components: {
+    Notification,
+  },
 
   data() {
     return {
@@ -11,6 +16,11 @@ export default {
         email: "",
         password: "",
         confirmPassword: "",
+      },
+      alertConfig: {
+        show: false,
+        type: "success",
+        text: "Cadastro realizado com sucesso",
       },
     };
   },
@@ -63,10 +73,16 @@ export default {
           email: this.form.email,
           password: this.form.password,
         });
+        this.alertConfig.show = true;
 
-        this.$router.push("/appraiser");
+        setTimeout(() => {
+          this.$router.push("/appraiser");
+        }, 500);
       } catch (err) {
-        console.error(err.response.data.error);
+        const { data } = err.response;
+        this.alertConfig.type = "error";
+        this.alertConfig.text = data.error;
+        this.alertConfig.show = true;
       }
     },
   },

@@ -1,5 +1,11 @@
 <template>
   <div class="register-appraiser">
+    <Notification
+      :show="alertConfig.show"
+      :type="alertConfig.type"
+      :text="alertConfig.text"
+      @hide-notification="() => (alertConfig.show = false)"
+    />
     <v-container>
       <v-row justify="center">
         <v-col sm="6" lg="3">
