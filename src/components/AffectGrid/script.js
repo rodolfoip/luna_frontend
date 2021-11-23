@@ -30,7 +30,6 @@ export default {
   methods: {
     onClickPosition(position) {
       if (this.clickable) {
-        console.log("called");
         this.positionSelected = position;
         this.$emit("on-click-position", position);
       }
