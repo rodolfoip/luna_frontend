@@ -1,13 +1,23 @@
 import { login } from "@/services";
 import { required, email } from "vuelidate/lib/validators";
+import Notification from "@/components/Notification";
 
 export default {
   name: "AppraiserLogin",
+
+  components: {
+    Notification,
+  },
 
   data() {
     return {
       email: "",
       password: "",
+      alertConfig: {
+        show: false,
+        type: "error",
+        text: "Login error",
+      },
     };
   },
 
@@ -48,7 +58,11 @@ export default {
 
         this.$router.push("/usability-test/list");
       } catch (err) {
-        console.error(err.response.data.error);
+        const { status } = err.response;
+        if (status === 401) {
+          this.alertConfig.text = "Verifique os campos ou faça um cadastro";
+          this.alertConfig.show = true;
+        }
       }
     },
   },
