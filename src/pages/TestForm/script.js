@@ -2,10 +2,12 @@ import Header from "@/components/Header";
 
 import { required, minLength, url } from "vuelidate/lib/validators";
 import { registerTest, updateTest, getTestById } from "@/services/test";
-import { mapGetters } from "vuex";
+import { user } from "@/mixins/User";
 
 export default {
   name: "TestForm",
+
+  mixins: [user],
 
   components: {
     Header,
@@ -65,9 +67,6 @@ export default {
     testName() {
       return this.form.name ? this.form.name : "Teste XXX";
     },
-    ...mapGetters({
-      userId: "user/userId",
-    }),
   },
 
   methods: {
