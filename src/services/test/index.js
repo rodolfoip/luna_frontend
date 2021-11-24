@@ -5,12 +5,14 @@ export const registerTest = ({
   accessCode,
   externalLink,
   prototypeLink,
+  userId,
 }) => {
   return API.post("/usability-test", {
     name,
     accessCode,
     externalLink,
     prototypeLink,
+    userId,
   });
 };
 

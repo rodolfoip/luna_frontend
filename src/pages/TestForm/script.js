@@ -2,6 +2,7 @@ import Header from "@/components/Header";
 
 import { required, minLength, url } from "vuelidate/lib/validators";
 import { registerTest, updateTest, getTestById } from "@/services/test";
+import { mapGetters } from "vuex";
 
 export default {
   name: "TestForm",
@@ -64,6 +65,9 @@ export default {
     testName() {
       return this.form.name ? this.form.name : "Teste XXX";
     },
+    ...mapGetters({
+      userId: "user/userId",
+    }),
   },
 
   methods: {
@@ -85,6 +89,7 @@ export default {
           accessCode: this.form.accessCode,
           externalLink: this.form.externalLink,
           prototypeLink: this.form.prototypeLink,
+          userId: this.userId,
         });
       } catch (err) {
         return err;
