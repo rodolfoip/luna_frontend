@@ -1,7 +1,8 @@
 import { API } from "../config";
 
-export const registerTask = ({ testId, order, description }) => {
+export const registerTask = ({ userId, testId, order, description }) => {
   return API.post("/usability-test/task", {
+    userId,
     testId,
     order,
     description,
@@ -9,6 +10,7 @@ export const registerTask = ({ testId, order, description }) => {
 };
 
 export const updateTask = ({
+  userId,
   testId,
   order,
   newOrder,
@@ -17,6 +19,7 @@ export const updateTask = ({
   affectGrid,
 }) => {
   return API.put("/usability-test/task", {
+    userId,
     testId,
     order,
     newOrder,
@@ -26,6 +29,6 @@ export const updateTask = ({
   });
 };
 
-export const deleteTask = (task) => {
-  return API.delete("/usability-test/task", { data: task });
+export const deleteTask = (userId, task) => {
+  return API.delete("/usability-test/task", { data: userId, task });
 };

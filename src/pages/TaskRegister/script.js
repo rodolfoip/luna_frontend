@@ -55,7 +55,7 @@ export default {
 
   methods: {
     loadTask() {
-      getTestById(this.$route.params.id).then((response) => {
+      getTestById(this.userId, this.$route.params.id).then((response) => {
         const { data } = response;
         data.usabilityTest.tasks.map((task) => {
           if (String(this.$route.params.order) === String(task.order)) {
@@ -72,6 +72,7 @@ export default {
 
       try {
         return await registerTask({
+          userId: this.userId,
           testId: this.$route.params.id,
           order: this.form.order,
           description: this.form.description,
@@ -89,6 +90,7 @@ export default {
 
       try {
         return await updateTask({
+          userId: this.userId,
           testId: this.$route.params.id,
           order: this.$route.params.order,
           newOrder: this.form.order,
