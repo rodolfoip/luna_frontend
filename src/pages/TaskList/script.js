@@ -59,7 +59,11 @@ export default {
       });
     },
     deleteItem(item) {
-      deleteTask({ testId: this.testId, order: item.order })
+      deleteTask({
+        userId: this.userId,
+        testId: this.testId,
+        order: item.order,
+      })
         .then(() => {
           this.alertConfig.show = true;
         })
@@ -69,7 +73,7 @@ export default {
           this.alertConfig.show = true;
         })
         .finally(() => {
-          getTestById(this.testId).then((response) => {
+          getTestById(this.userId, this.testId).then((response) => {
             const { data } = response;
             this.items = data.usabilityTest.tasks;
           });
