@@ -21,9 +21,9 @@ export const listTests = (userId) => {
 };
 
 export const getTestById = (userId, id) => {
-  return API.get("/usability-test", {
-    userId,
-    id,
+  return API.post("/usability-test/id", {
+    userId: userId,
+    id: id,
   });
 };
 

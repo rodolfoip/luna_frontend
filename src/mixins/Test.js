@@ -23,7 +23,7 @@ export const test = {
 
   methods: {
     getTest() {
-      getTestById(this.testId).then((response) => {
+      getTestById(this.userId, this.testId).then((response) => {
         const { data } = response;
         const test = {
           ...data.usabilityTest,
