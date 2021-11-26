@@ -16,20 +16,29 @@ export const registerTest = ({
   });
 };
 
-export const listTests = () => {
-  return API.get("/usability-test");
+export const listTests = (userId) => {
+  return API.get(`/usability-test/all/${userId}`);
 };
 
-export const getTestById = (id) => {
-  return API.get(`/usability-test/${id}`);
+export const getTestById = (userId, id) => {
+  return API.get("/usability-test", {
+    userId,
+    id,
+  });
 };
 
-export const getTestByName = (name) => {
-  return API.get(`/usability-test/name/${name}`);
+export const getTestByName = (userId, name) => {
+  return API.get("/usability-test/name", {
+    userId,
+    name,
+  });
 };
 
-export const getTestByAccessCode = (accessCode) => {
-  return API.get(`/usability-test/accessCode/${accessCode}`);
+export const getTestByAccessCode = (userId, accessCode) => {
+  return API.get("/usability-test/accessCode/", {
+    userId,
+    accessCode,
+  });
 };
 
 export const updateTest = ({

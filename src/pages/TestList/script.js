@@ -46,7 +46,7 @@ export default {
 
   methods: {
     getTestList() {
-      listTests().then((response) => {
+      listTests(this.userId).then((response) => {
         const { data } = response;
         this.$data.items = data.list;
       });

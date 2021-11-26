@@ -6,9 +6,12 @@ import vuetify from "./plugins/vuetify";
 
 import Vuelidate from "vuelidate";
 
+import { user } from "@/mixins/User";
+
 Vue.config.productionTip = false;
 
 Vue.use(Vuelidate);
+Vue.mixin(user);
 
 new Vue({
   router,
