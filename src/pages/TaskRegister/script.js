@@ -1,5 +1,6 @@
 import { required, minLength, numeric } from "vuelidate/lib/validators";
-import Header from "../../components/Header";
+import Header from "@/components/Header";
+import Notification from "@/components/Notification";
 import { registerTask, getTestById, updateTask } from "@/services";
 
 export default {
@@ -7,6 +8,7 @@ export default {
 
   components: {
     Header,
+    Notification,
   },
 
   mounted() {
@@ -27,6 +29,18 @@ export default {
         params: {
           id: this.$route.params.id,
         },
+      },
+      taskRegisterRoute: {
+        name: "TaskRegister",
+        params: {
+          id: this.$route.params.id,
+        },
+      },
+      alertConfig: {
+        show: false,
+        timeout: 2000,
+        type: "success",
+        text: "Tarefa cadastrada com sucesso",
       },
     };
   },
@@ -64,6 +78,7 @@ export default {
         });
       });
     },
+
     async save() {
       this.$v.$touch();
       if (this.$v.$error && this.$v.$invalid) {
@@ -109,18 +124,34 @@ export default {
               response?.status === 201 &&
               response?.statusText === "Created"
             ) {
-              console.log("Sucesso");
+              this.alertConfig.show = true;
+              setTimeout(() => {
+                this.goToTaskList();
+              }, 500);
             }
           })
-          .catch((err) => console.error(err));
+          .catch(({ response }) => {
+            this.alertConfig.text = response.data.error;
+            this.alertConfig.type = "red accent-4";
+            this.alertConfig.show = true;
+          });
       } else {
-        this.update().then((response) => {
-          if (response?.status === 204) {
-            console.log("Sucesso");
-          }
-        });
+        this.update()
+          .then((response) => {
+            if (response?.status === 200) {
+              this.alertConfig.show = true;
+              this.alertConfig.text = "Tarefa atualizada com sucesso";
+              setTimeout(() => {
+                this.goToTaskList();
+              }, 500);
+            }
+          })
+          .catch(({ response }) => {
+            this.alertConfig.text = response.data.error;
+            this.alertConfig.type = "red accent-4";
+            this.alertConfig.show = true;
+          });
       }
-      this.$router.push(this.taskListRoute);
     },
 
     addNewTask() {
@@ -139,19 +170,38 @@ export default {
               this.$v.$reset();
             }
           })
-          .catch((err) => console.error(err));
+          .catch(({ response }) => {
+            this.alertConfig.text = response.data.error;
+            this.alertConfig.type = "red accent-4";
+            this.alertConfig.show = true;
+          });
       } else {
-        this.update().then((response) => {
-          if (response?.status === 204) {
-            this.form = {
-              testId: null,
-              order: null,
-              description: null,
-            };
-            this.$v.$reset();
-          }
-        });
+        this.update()
+          .then((response) => {
+            if (response?.status === 200) {
+              this.form = {
+                testId: null,
+                order: null,
+                description: null,
+              };
+              this.$v.$reset();
+              this.goToTaskRegister();
+            }
+          })
+          .catch(({ response }) => {
+            this.alertConfig.text = response.data.error;
+            this.alertConfig.type = "red accent-4";
+            this.alertConfig.show = true;
+          });
       }
+    },
+
+    goToTaskList() {
+      this.$router.push(this.taskListRoute);
+    },
+
+    goToTaskRegister() {
+      this.$router.push(this.taskRegisterRoute);
     },
   },
 

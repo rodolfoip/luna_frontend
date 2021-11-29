@@ -1,5 +1,11 @@
 <template>
   <div class="task-register">
+    <Notification
+      :show="alertConfig.show"
+      :type="alertConfig.type"
+      :text="alertConfig.text"
+      @hide-notification="() => (alertConfig.show = false)"
+    />
     <Header>
       <v-row justify="space-between">
         <v-col cols="auto d-flex align-center">
