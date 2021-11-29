@@ -1,10 +1,10 @@
 import Header from "@/components/Header";
-import { test } from "@/mixins/Test";
+import { participant } from "@/mixins/Participant";
 
 export default {
   name: "TestInit",
 
-  mixins: [test],
+  mixins: [participant],
 
   components: {
     Header,
