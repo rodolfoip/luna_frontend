@@ -31,7 +31,7 @@
         <h2 class="task-list__title">Lista de tarefas</h2>
         <v-data-table
           :headers="headers"
-          :items="tasks"
+          :items="testTasks"
           :items-per-page="5"
           class="elevation-1"
           :single-expand="singleExpand"

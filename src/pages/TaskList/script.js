@@ -1,6 +1,6 @@
 import Header from "@/components/Header";
 import Notification from "@/components/Notification";
-import { getTestById, deleteTask } from "@/services";
+import { deleteTask } from "@/services";
 import { test } from "@/mixins/Test";
 
 export default {
@@ -58,8 +58,8 @@ export default {
         params: { id: this.testId, order: item.order },
       });
     },
-    deleteItem(item) {
-      deleteTask({
+    async deleteItem(item) {
+      await deleteTask({
         userId: this.userId,
         testId: this.testId,
         order: item.order,
@@ -73,10 +73,7 @@ export default {
           this.alertConfig.show = true;
         })
         .finally(() => {
-          getTestById(this.userId, this.testId).then((response) => {
-            const { data } = response;
-            this.items = data.usabilityTest.tasks;
-          });
+          this.getTest();
         });
     },
   },

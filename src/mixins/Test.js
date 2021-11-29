@@ -19,6 +19,9 @@ export const test = {
     testId() {
       return this.$route.params.id;
     },
+    testTasks() {
+      return this.tasks;
+    },
   },
 
   methods: {
