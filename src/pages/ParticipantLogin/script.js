@@ -1,4 +1,4 @@
-import { loginByAccessCode } from "@/services";
+import { getTestByAccessCode } from "@/services";
 
 export default {
   name: "ParticipantLogin",
@@ -11,7 +11,7 @@ export default {
 
   methods: {
     initTest() {
-      loginByAccessCode(this.accessCode)
+      getTestByAccessCode(this.accessCode)
         .then((response) => {
           const { data } = response;
 
