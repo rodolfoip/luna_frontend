@@ -83,27 +83,27 @@ const routes = [
     beforeEnter: checkUserLogged,
   },
   {
-    path: "/participant/test/:id/init",
+    path: "/participant/test/:accessCode/init",
     name: "TestInit",
     component: TestInit,
   },
   {
-    path: "/participant/test/:id/task/init/:order",
+    path: "/participant/test/:accessCode/task/init/:order",
     name: "TaskInit",
     component: TaskInit,
   },
   {
-    path: "/participant/test/:id/sus",
+    path: "/participant/test/:accessCode/sus",
     name: "TaskForm",
     component: TaskForm,
   },
   {
-    path: "/participant/test/:id/affect-grid",
+    path: "/participant/test/:accessCode/affect-grid",
     name: "TaskAffectGrid",
     component: TaskAffectGrid,
   },
   {
-    path: "/participant/test/:id/task/:order",
+    path: "/participant/test/:accessCode/task/:order",
     name: "Task",
     component: Task,
   },

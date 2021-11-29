@@ -18,7 +18,7 @@ export default {
           this.$router.push({
             name: "TestInit",
             params: {
-              id: data.usabilityTest._id,
+              accessCode: data.usabilityTest.accessCode,
             },
           });
 
