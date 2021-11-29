@@ -1,11 +1,11 @@
-import { test } from "@/mixins/Test";
+import { participant } from "@/mixins/Participant";
 import dayjs from "dayjs";
 import { registerResult } from "@/services";
 
 export default {
   name: "Task",
 
-  mixins: [test],
+  mixins: [participant],
 
   computed: {
     taskOrder() {
