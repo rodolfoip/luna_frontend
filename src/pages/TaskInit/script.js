@@ -1,5 +1,5 @@
 import Header from "@/components/Header";
-import { test } from "@/mixins/Test";
+import { participant } from "@/mixins/Participant";
 
 export default {
   name: "TaskInit",
@@ -8,7 +8,7 @@ export default {
     Header,
   },
 
-  mixins: [test],
+  mixins: [participant],
 
   computed: {
     taskOrder() {
@@ -16,7 +16,7 @@ export default {
     },
     actualTask() {
       return this.tasks.find((task) => {
-        return task.order === this.taskOrder;
+        return task.order === Number(this.taskOrder);
       });
     },
   },

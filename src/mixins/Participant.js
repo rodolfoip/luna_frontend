@@ -9,6 +9,9 @@ export const participant = {
     testAccessCode() {
       return this.$route.params.accessCode;
     },
+    tasks() {
+      return this.testSelected?.tasks || [];
+    },
   },
 
   methods: {
