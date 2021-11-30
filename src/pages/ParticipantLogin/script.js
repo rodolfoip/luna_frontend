@@ -1,11 +1,21 @@
 import { getTestByAccessCode } from "@/services";
+import Notification from "@/components/Notification";
 
 export default {
   name: "ParticipantLogin",
 
+  components: {
+    Notification,
+  },
+
   data() {
     return {
       accessCode: "",
+      alertConfig: {
+        show: false,
+        type: "error",
+        text: "Teste não encontrado, tente outro código",
+      },
     };
   },
 
@@ -28,6 +38,7 @@ export default {
           });
         })
         .catch((err) => {
+          this.alertConfig.show = true;
           console.error(err);
         });
     },
