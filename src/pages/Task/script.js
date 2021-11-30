@@ -75,7 +75,9 @@ export default {
     susFormPage(resultId) {
       this.$router.push({
         name: "TaskForm",
-        id: resultId,
+        params: {
+          id: resultId,
+        },
       });
     },
   },

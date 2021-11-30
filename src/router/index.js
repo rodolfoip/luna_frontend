@@ -93,12 +93,12 @@ const routes = [
     component: TaskInit,
   },
   {
-    path: "/participant/test/:accessCode/sus",
+    path: "/participant/test/:id/sus",
     name: "TaskForm",
     component: TaskForm,
   },
   {
-    path: "/participant/test/:accessCode/affect-grid",
+    path: "/participant/test/:id/affect-grid",
     name: "TaskAffectGrid",
     component: TaskAffectGrid,
   },
