@@ -2,12 +2,9 @@ import Header from "@/components/Header";
 
 import { required, minLength, url } from "vuelidate/lib/validators";
 import { registerTest, updateTest, getTestById } from "@/services/test";
-import { user } from "@/mixins/User";
 
 export default {
   name: "TestForm",
-
-  mixins: [user],
 
   components: {
     Header,
@@ -71,7 +68,7 @@ export default {
 
   methods: {
     loadTest() {
-      getTestById(this.$route.params.id).then((response) => {
+      getTestById(this.userId, this.$route.params.id).then((response) => {
         const { data } = response;
         this.form = { ...data.usabilityTest };
       });
@@ -108,6 +105,7 @@ export default {
           prototypeLink: this.form.prototypeLink,
           tasks: this.form.tasks,
           quantity: this.form.quantity,
+          userId: this.form.userId,
         });
       } catch (err) {
         return err;
@@ -128,7 +126,7 @@ export default {
       } else {
         this.update()
           .then((response) => {
-            if (response?.status === 204) {
+            if (response?.status === 200) {
               this.$router.push("/usability-test/list");
             }
           })

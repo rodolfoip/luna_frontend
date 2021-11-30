@@ -48,6 +48,7 @@ export const updateTest = ({
   prototypeLink,
   tasks,
   quantity,
+  userId,
 }) => {
   return API.put("/usability-test", {
     _id,
@@ -56,6 +57,7 @@ export const updateTest = ({
     prototypeLink,
     tasks,
     quantity,
+    userId,
   });
 };
 
