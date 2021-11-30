@@ -62,7 +62,7 @@ export default {
       this.$router.push({ name: "TestEdit", params: { id: item._id } });
     },
     deleteItem(item) {
-      deleteTest(item._id)
+      deleteTest(this.userId, item._id)
         .then(() => {
           this.alertConfig.show = true;
         })

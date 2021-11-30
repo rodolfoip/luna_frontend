@@ -61,6 +61,6 @@ export const updateTest = ({
   });
 };
 
-export const deleteTest = (id) => {
-  return API.delete("/usability-test", { data: { id: id } });
+export const deleteTest = (userId, id) => {
+  return API.delete("/usability-test", { data: { userId, id } });
 };
