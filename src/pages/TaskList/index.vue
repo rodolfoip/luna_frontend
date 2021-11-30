@@ -7,24 +7,17 @@
       @hide-notification="() => (alertConfig.show = false)"
     />
     <Header>
-      <v-btn
-        small
-        color="green darken-1"
-        elevation="0"
-        class="white--text"
-        :to="taskRegisterRoute"
-      >
-        Adicionar tarefa
-      </v-btn>
-      <v-btn
-        small
-        color="blue-grey"
-        elevation="0"
-        class="white--text ml-4"
-        to="/usability-test/list"
-      >
-        Voltar
-      </v-btn>
+      <div class="d-flex flex-row-reverse">
+        <v-btn
+          small
+          color="blue-grey"
+          elevation="0"
+          class="white--text"
+          to="/usability-test/list"
+        >
+          Voltar
+        </v-btn>
+      </div>
     </Header>
     <v-container>
       <div class="task-list__content">
