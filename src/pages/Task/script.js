@@ -62,7 +62,7 @@ export default {
       this.finishDate = dayjs();
       const diffTimeTask = this.finishDate.diff(this.initDate);
       registerResult({
-        testId: this.testId,
+        testId: this.testSelected._id,
         orderTask: this.taskOrder,
         timeTask: dayjs(diffTimeTask).format("mm:ss"),
         aborted: this.aborted,
