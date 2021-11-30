@@ -16,7 +16,7 @@ export default {
     },
     actualTask() {
       return this.tasks.find((task) => {
-        return task.order === Number(this.taskOrder);
+        return Number(task.order) === Number(this.taskOrder);
       });
     },
   },
