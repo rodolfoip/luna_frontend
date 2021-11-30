@@ -57,8 +57,9 @@
               @blur="$v.form.accessCode.$touch()"
             >
             </v-text-field>
+            <!-- TODO - Implementar função para gerar código aleatório que ainda não existe -->
             <v-btn
-              v-if="!isEditPage"
+              v-if="!isEditPage && false"
               color="secondary"
               small
               elevation="0"
