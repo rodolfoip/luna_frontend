@@ -3,9 +3,12 @@ import Header from "@/components/Header";
 import AffectGrid from "@/components/AffectGrid";
 import Notification from "@/components/Notification";
 import { getResultById, updateResult } from "@/services";
+import { participant } from "@/mixins/Participant";
 
 export default {
   name: "TaskAffectGrid",
+
+  mixins: [participant],
 
   components: {
     Header,
@@ -14,8 +17,24 @@ export default {
   },
 
   computed: {
+    taskOrder() {
+      return this.$route.params.order;
+    },
     resultId() {
       return this.$route.params.id;
+    },
+    isLastTask() {
+      const tasks = [...this.tasks];
+      const lastTask = tasks.pop();
+      return this.taskOrder === lastTask.order;
+    },
+    nextOrder() {
+      if (!this.isLastTask) {
+        const orderIndex = this.tasks.findIndex(
+          (item) => Number(item.order) === Number(this.taskOrder)
+        );
+        return this.tasks[orderIndex + 1].order;
+      }
     },
   },
 
@@ -66,9 +85,24 @@ export default {
             type: "success",
             text: "Affect Grid salvo com sucesso",
           };
-          this.$router.push("/");
+
+          if (this.isLastTask) {
+            this.$router.push("/");
+          } else {
+            this.$router.push({
+              name: "TaskInit",
+              params: {
+                accessCode: this.testAccessCode,
+                order: this.nextOrder,
+              },
+            });
+          }
         })
         .catch((err) => {
+          this.alertConfig = {
+            show: true,
+            text: "Ocorreu um erro ao salvar",
+          };
           console.error(err);
         });
     },

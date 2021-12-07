@@ -10,6 +10,9 @@ export default {
   },
 
   computed: {
+    taskOrder() {
+      return this.$route.params.order;
+    },
     resultId() {
       return this.$route.params.id;
     },
@@ -80,8 +83,7 @@ export default {
         sus: susScore,
       }).then((response) => {
         const { data } = response;
-        console.log(data);
-        this.affectGridPage(data.result._id);
+        this.affectGridPage(data.result._id, this.taskOrder);
       });
     },
 
@@ -106,10 +108,11 @@ export default {
       return susScore;
     },
 
-    affectGridPage(resultId) {
+    affectGridPage(resultId, taskOrder) {
       this.$router.push({
         name: "TaskAffectGrid",
         id: resultId,
+        order: taskOrder,
       });
     },
   },

@@ -7,7 +7,7 @@ export const participant = {
       testSelected: "test/testSelected",
     }),
     testAccessCode() {
-      return this.$route.params.accessCode;
+      return this.$route.params.accessCode ?? this.testSelected.accessCode;
     },
     tasks() {
       return this.testSelected?.tasks || [];

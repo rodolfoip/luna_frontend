@@ -69,14 +69,15 @@ export default {
         clicks: this.clicks,
       }).then((response) => {
         const { data } = response;
-        this.susFormPage(data.result._id);
+        this.susFormPage(data.result._id, this.taskOrder);
       });
     },
-    susFormPage(resultId) {
+    susFormPage(resultId, taskOrder) {
       this.$router.push({
         name: "TaskForm",
         params: {
           id: resultId,
+          order: taskOrder,
         },
       });
     },
