@@ -9,7 +9,7 @@
     <v-container>
       <v-row justify="center">
         <v-col sm="6" lg="3">
-          <v-form @submit="initTest">
+          <v-form @submit.prevent="initTest">
             <v-card elevation="0" class="login-participant__form">
               <h4 class="form__title">Acessar teste</h4>
               <div class="form__subtitle">
