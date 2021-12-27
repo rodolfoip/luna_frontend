@@ -39,8 +39,22 @@
             <div class="form__register">
               <h5 class="form-divisor">ou</h5>
               <h5 class="form-info">Crie uma conta</h5>
-              <v-btn color="secondary" elevation="2" to="/appraiser/register">
+              <v-btn
+                color="secondary"
+                elevation="2"
+                to="/appraiser/register"
+                class="mb-5"
+              >
                 Cadastrar nova conta
+              </v-btn>
+              <h5 class="form-divisor">ou</h5>
+              <v-btn
+                color="green darken-1"
+                elevation="2"
+                to="/participant"
+                class="mt-3 white--text"
+              >
+                Entrar como participante
               </v-btn>
             </div>
           </v-card>
