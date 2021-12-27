@@ -10,7 +10,6 @@
   }
 
   .form {
-
     &__title {
       color: #47525E;
       font-size: 1.875rem;
@@ -25,6 +24,32 @@
 
     &__input {
       margin-bottom: 1rem;
+    }
+
+    &-divisor {
+      position: relative;
+      font-weight: 500;
+      font-size: 1.25rem;
+      margin-top: 1rem;
+
+      &:before,
+      &:after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        height: 1px;
+        background-color: #47525E;
+      }
+
+      &:before {
+        left: 0;
+        right: 60%;
+      }
+
+      &:after {
+        left: 60%;
+        right: 0;
+      }
     }
   }
 }

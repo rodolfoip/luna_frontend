@@ -28,6 +28,15 @@
               <v-btn color="primary" elevation="2" type="submit">
                 Entrar
               </v-btn>
+              <h5 class="form-divisor">ou</h5>
+              <v-btn
+                color="green darken-1"
+                elevation="2"
+                to="/appraiser"
+                class="mt-4 white--text"
+              >
+                Entrar como avaliador
+              </v-btn>
             </v-card>
           </v-form>
         </v-col>
