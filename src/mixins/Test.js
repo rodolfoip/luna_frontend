@@ -1,10 +1,11 @@
-import { getTestById } from "@/services";
+import { getTestById, getResultByTestId } from "@/services";
 import { mapGetters } from "vuex";
 
 export const test = {
   data() {
     return {
       tasks: [],
+      results: [],
     };
   },
 
@@ -28,18 +29,22 @@ export const test = {
     getTest() {
       getTestById(this.userId, this.testId).then((response) => {
         const { data } = response;
-        const test = {
-          ...data.usabilityTest,
-          realized: data.usabilityTest.quantity > 0,
-        };
 
         this.$store.dispatch({
           type: "test/setTest",
-          value: test,
+          value: data.usabilityTest,
         });
+
+        this.getResults(data.usabilityTest._id);
 
         this.loadTasks();
         return test;
+      });
+    },
+
+    getResults(testId) {
+      getResultByTestId(testId).then((response) => {
+        this.results = response.data.result;
       });
     },
 

@@ -20,6 +20,10 @@ export const getResultById = (id) => {
   return API.get(`/result/${id}`);
 };
 
+export const getResultByTestId = (id) => {
+  return API.get(`/result/test/${id}`);
+};
+
 export const updateResult = ({ _id, sus, affectGrid }) => {
   return API.put("/result", {
     _id,
