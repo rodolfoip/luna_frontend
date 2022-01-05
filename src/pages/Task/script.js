@@ -16,6 +16,14 @@ export default {
         return Number(task.order) === Number(this.taskOrder);
       });
     },
+    nextOrder() {
+      if (!this.isLastTask) {
+        const orderIndex = this.tasks.findIndex(
+          (item) => Number(item.order) === Number(this.taskOrder)
+        );
+        return this.tasks[orderIndex + 1].order;
+      }
+    },
   },
 
   data() {
@@ -68,16 +76,27 @@ export default {
         aborted: this.aborted,
         clicks: this.clicks,
       }).then((response) => {
-        const { data } = response;
-        this.susFormPage(data.result._id, this.taskOrder);
+        if (!this.isLastTask) {
+          this.nextTask();
+        } else {
+          this.susForm(response._id);
+        }
       });
     },
-    susFormPage(resultId, taskOrder) {
+    nextTask() {
       this.$router.push({
-        name: "TaskForm",
+        name: "TaskInit",
+        params: {
+          accessCode: this.testAccessCode,
+          order: this.nextOrder,
+        },
+      });
+    },
+    susForm(resultId) {
+      this.$router.push({
+        name: "SusForm",
         params: {
           id: resultId,
-          order: taskOrder,
         },
       });
     },

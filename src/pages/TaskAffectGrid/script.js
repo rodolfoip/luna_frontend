@@ -23,19 +23,6 @@ export default {
     resultId() {
       return this.$route.params.id;
     },
-    isLastTask() {
-      const tasks = [...this.tasks];
-      const lastTask = tasks.pop();
-      return this.taskOrder === lastTask.order;
-    },
-    nextOrder() {
-      if (!this.isLastTask) {
-        const orderIndex = this.tasks.findIndex(
-          (item) => Number(item.order) === Number(this.taskOrder)
-        );
-        return this.tasks[orderIndex + 1].order;
-      }
-    },
   },
 
   mounted() {
@@ -86,17 +73,7 @@ export default {
             text: "Affect Grid salvo com sucesso",
           };
 
-          if (this.isLastTask) {
-            this.$router.push("/");
-          } else {
-            this.$router.push({
-              name: "TaskInit",
-              params: {
-                accessCode: this.testAccessCode,
-                order: this.nextOrder,
-              },
-            });
-          }
+          this.$router.push("/");
         })
         .catch((err) => {
           this.alertConfig = {
