@@ -55,6 +55,22 @@
               </v-card-text>
             </v-card>
           </v-col>
+          <v-col cols="3" align="center">
+            <v-card elevation="2" class="mb-6">
+              <v-card-title class="justify-center"> Eficácia </v-card-title>
+              <v-card-text>
+                <v-progress-circular
+                  :rotate="360"
+                  :size="100"
+                  :width="15"
+                  :value="averageEffectiveness"
+                  color="teal"
+                >
+                  {{ averageEffectiveness }}%
+                </v-progress-circular>
+              </v-card-text>
+            </v-card>
+          </v-col>
         </v-row>
         <h2 class="test-results__title">Resultados por participante</h2>
         <v-data-table

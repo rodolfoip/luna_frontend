@@ -20,12 +20,25 @@ export const result = {
         this.results.length;
       return Math.round(affectGrid);
     },
+    averageEffectiveness() {
+      let count = 0;
+      let tasksLength = 0;
+      this.results.forEach((result) => {
+        tasksLength += result.tasks.length;
+        count = result.tasks.reduce((sum, taskResult) => {
+          return sum + !taskResult.aborted;
+        }, count);
+      });
+      const percentage = Math.round((count / tasksLength) * 100);
+      return percentage;
+    },
   },
 
   methods: {
     getResults(testId) {
       getResultByTestId(testId).then((response) => {
-        this.results = response.data.results;
+        const { data } = response;
+        this.results = data.results;
       });
     },
   },
