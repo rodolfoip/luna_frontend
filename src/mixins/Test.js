@@ -1,11 +1,10 @@
-import { getTestById, getResultByTestId } from "@/services";
+import { getTestById } from "@/services";
 import { mapGetters } from "vuex";
 
 export const test = {
   data() {
     return {
       tasks: [],
-      results: [],
     };
   },
 
@@ -39,12 +38,6 @@ export const test = {
 
         this.loadTasks();
         return test;
-      });
-    },
-
-    getResults(testId) {
-      getResultByTestId(testId).then((response) => {
-        this.results = response.data.result;
       });
     },
 

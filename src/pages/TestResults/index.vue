@@ -20,10 +20,46 @@
     </Header>
     <v-container>
       <div class="test-results__content">
-        <h2 class="test-results__title">Resultados do teste XXX</h2>
+        <h2 class="test-results__title">Resultados gerais</h2>
+        <v-row justify="center">
+          <v-col cols="3" align="center">
+            <v-card elevation="2" class="mb-6">
+              <v-card-title class="justify-center">
+                SUS - Satisfação
+              </v-card-title>
+              <v-card-text>
+                <v-progress-circular
+                  :rotate="360"
+                  :size="100"
+                  :width="15"
+                  :value="averageSUS"
+                  color="teal"
+                >
+                  {{ averageSUS }}
+                </v-progress-circular>
+              </v-card-text>
+            </v-card>
+          </v-col>
+          <v-col cols="3" align="center">
+            <v-card elevation="2" class="mb-6">
+              <v-card-title class="justify-center"> Affect Grid </v-card-title>
+              <v-card-text>
+                <v-btn
+                  elevation="0"
+                  x-small
+                  color="primary"
+                  @click.stop="showAffectGrid(averageAffectGrid)"
+                >
+                  Visualizar
+                </v-btn>
+              </v-card-text>
+            </v-card>
+          </v-col>
+        </v-row>
+        <h2 class="test-results__title">Resultados por participante</h2>
         <v-data-table
           :headers="headers"
-          :items="tasks"
+          :items="results"
           :items-per-page="5"
           class="elevation-1"
         >

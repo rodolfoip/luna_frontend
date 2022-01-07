@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import AffectGridModal from "@/components/AffectGridModal";
 import { test } from "@/mixins/Test";
+import { result } from "@/mixins/Result";
 
 export default {
   name: "TestList",
@@ -10,15 +11,15 @@ export default {
     AffectGridModal,
   },
 
-  mixins: [test],
+  mixins: [test, result],
 
   data() {
     return {
       headers: [
-        { text: "Tarefa", align: "start", value: "order" },
+        { text: "N°", align: "start", value: "order" },
         { text: "Eficácia", value: "effectiveness" },
         { text: "Eficiência", value: "efficiency" },
-        { text: "Satisfação", value: "satisfaction" },
+        { text: "Satisfação", value: "sus" },
         { text: "Affect Grid", value: "affectGrid", sortable: false },
       ],
       affectGrid: {
