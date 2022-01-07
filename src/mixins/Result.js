@@ -38,7 +38,10 @@ export const result = {
     getResults(testId) {
       getResultByTestId(testId).then((response) => {
         const { data } = response;
-        this.results = data.results;
+        this.results = data.results.map((item, index) => ({
+          ...item,
+          index: index + 1,
+        }));
       });
     },
   },

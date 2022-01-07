@@ -16,7 +16,7 @@ export default {
   data() {
     return {
       headers: [
-        { text: "N°", align: "start", value: "order" },
+        { text: "N°", align: "start", value: "index" },
         { text: "Eficácia", value: "effectiveness" },
         { text: "Eficiência", value: "efficiency" },
         { text: "Satisfação", value: "sus" },
