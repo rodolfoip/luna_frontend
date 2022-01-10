@@ -60,7 +60,7 @@
           color="blue-grey"
           elevation="0"
           class="white--text mt-6 ml-6"
-          :disabled="!results"
+          :disabled="!results.length"
           :to="taskResultsRoute"
         >
           Ver resultados
