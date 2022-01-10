@@ -1,4 +1,5 @@
 import { getResultByTestId } from "@/services";
+import { Math } from "core-js";
 
 export const result = {
   data() {
@@ -41,8 +42,14 @@ export const result = {
         this.results = data.results.map((item, index) => ({
           ...item,
           index: index + 1,
+          effectiveness: this.calcEffectiveness(item.tasks),
         }));
       });
+    },
+
+    calcEffectiveness(tasks) {
+      let count = tasks.reduce((sum, task) => sum + !task.aborted, 0);
+      return Math.round((count / tasks.length) * 100);
     },
   },
 };
