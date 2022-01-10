@@ -18,7 +18,7 @@ export default {
       headers: [
         { text: "N°", align: "start", value: "index" },
         { text: "Eficácia", value: "effectiveness" },
-        { text: "Eficiência", value: "efficiency" },
+        { text: "Eficiência (Em horas)", value: "efficiency" },
         { text: "Satisfação", value: "sus" },
         { text: "Affect Grid", value: "affectGrid", sortable: false },
       ],

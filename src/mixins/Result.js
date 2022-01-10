@@ -1,5 +1,9 @@
 import { getResultByTestId } from "@/services";
-import { Math } from "core-js";
+import dayjs from "dayjs";
+import customParseFormat from "dayjs/plugin/customParseFormat";
+import duration from "dayjs/plugin/duration";
+dayjs.extend(customParseFormat);
+dayjs.extend(duration);
 
 export const result = {
   data() {
@@ -43,6 +47,7 @@ export const result = {
           ...item,
           index: index + 1,
           effectiveness: this.calcEffectiveness(item.tasks),
+          efficiency: this.calcEfficiency(item.tasks),
         }));
       });
     },
@@ -50,6 +55,18 @@ export const result = {
     calcEffectiveness(tasks) {
       let count = tasks.reduce((sum, task) => sum + !task.aborted, 0);
       return Math.round((count / tasks.length) * 100);
+    },
+
+    calcEfficiency(tasks) {
+      let count = dayjs.duration();
+      tasks.map((task) => {
+        const taskFormated = dayjs(task.timeTask, "mm:ss");
+        count = count.add({
+          minutes: taskFormated.minute(),
+          seconds: taskFormated.second(),
+        });
+      });
+      return count.format("HH:mm:ss");
     },
   },
 };
