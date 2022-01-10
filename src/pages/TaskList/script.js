@@ -2,6 +2,7 @@ import Header from "@/components/Header";
 import Notification from "@/components/Notification";
 import { deleteTask } from "@/services";
 import { test } from "@/mixins/Test";
+import { result } from "@/mixins/Result";
 
 export default {
   name: "TestList",
@@ -11,7 +12,7 @@ export default {
     Notification,
   },
 
-  mixins: [test],
+  mixins: [test, result],
 
   computed: {
     taskRegisterRoute() {
