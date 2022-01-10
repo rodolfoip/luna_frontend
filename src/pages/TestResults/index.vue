@@ -11,7 +11,7 @@
             color="info darken-1"
             elevation="0"
             class="white--text"
-            to="/usability-test/list"
+            :to="`/usability-test/${testSelected._id}/task/list`"
           >
             Fechar resultados
           </v-btn>
