@@ -78,6 +78,7 @@
           :items="results"
           :items-per-page="5"
           class="elevation-1"
+          @click:row="showIndividualResult"
         >
           <template v-slot:item.affectGrid="{ item }">
             <v-btn
@@ -94,6 +95,11 @@
           :is-expanded="affectGrid.modal"
           :posInMatriz="affectGrid.posInMatriz"
           @close-dialog="affectGrid.modal = false"
+        />
+        <IndividualResultModal
+          :is-expanded="individualResult.modal"
+          :tasks="individualResult.tasks"
+          @close-dialog="individualResult.modal = false"
         />
       </div>
     </v-container>

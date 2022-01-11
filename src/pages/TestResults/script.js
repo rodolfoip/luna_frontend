@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import AffectGridModal from "@/components/AffectGridModal";
+import IndividualResultModal from "@/components/IndividualResultModal";
 import { test } from "@/mixins/Test";
 import { result } from "@/mixins/Result";
 
@@ -9,6 +10,7 @@ export default {
   components: {
     Header,
     AffectGridModal,
+    IndividualResultModal,
   },
 
   mixins: [test, result],
@@ -26,6 +28,10 @@ export default {
         modal: false,
         posInMatriz: 0,
       },
+      individualResult: {
+        tasks: [],
+        modal: false,
+      },
     };
   },
 
@@ -33,6 +39,11 @@ export default {
     showAffectGrid(posInMatriz) {
       this.affectGrid.posInMatriz = posInMatriz;
       this.affectGrid.modal = true;
+    },
+
+    showIndividualResult(result) {
+      this.individualResult.tasks = result.tasks;
+      this.individualResult.modal = true;
     },
   },
 };
