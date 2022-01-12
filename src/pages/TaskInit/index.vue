@@ -7,7 +7,7 @@
           <div class="header__subtitle">Tarefa-{{ taskOrder }}</div>
         </v-col>
         <v-col cols="auto">
-          <v-btn small color="info" elevation="0">Sair</v-btn>
+          <v-btn small color="info" elevation="0" to="/">Sair</v-btn>
         </v-col>
       </v-row>
     </Header>
