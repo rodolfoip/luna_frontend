@@ -14,10 +14,10 @@ export const result = {
 
   computed: {
     averageSUS() {
-      return (
+      const percentage =
         this.results.reduce((sum, result) => sum + result.sus, 0) /
-        this.results.length
-      );
+        this.results.length;
+      return Math.round(percentage);
     },
     averageAffectGrid() {
       let affectGrid =
