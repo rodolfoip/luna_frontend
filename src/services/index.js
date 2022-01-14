@@ -9,4 +9,5 @@ export {
   getResultById,
   getResultByTestId,
   updateResult,
+  addTaskResult,
 } from "./result";

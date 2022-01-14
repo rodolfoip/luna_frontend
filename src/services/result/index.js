@@ -31,3 +31,12 @@ export const updateResult = ({ _id, sus, affectGrid }) => {
     affectGrid,
   });
 };
+
+export const addTaskResult = ({ _id, orderTask, timeTask, aborted }) => {
+  return API.put("/add-result", {
+    _id,
+    orderTask,
+    timeTask,
+    aborted,
+  });
+};

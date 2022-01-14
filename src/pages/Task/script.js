@@ -1,13 +1,21 @@
 import { participant } from "@/mixins/Participant";
 import dayjs from "dayjs";
-import { registerResult } from "@/services";
+import { registerResult, getResultByTestId, addTaskResult } from "@/services";
+import { mapGetters } from "vuex";
 
 export default {
   name: "Task",
 
   mixins: [participant],
 
+  mounted() {
+    this.loadResult();
+  },
+
   computed: {
+    ...mapGetters({
+      resultSelected: "result/resultSelected",
+    }),
     taskOrder() {
       return this.$route.params.order;
     },
@@ -23,6 +31,19 @@ export default {
         );
         return this.tasks[orderIndex + 1].order;
       }
+    },
+    isLastTask() {
+      return !this.tasks.some(
+        (task) => Number(task.order) > Number(this.taskOrder)
+      );
+    },
+    taskHasResult() {
+      if (!this.resultSelected) {
+        return false;
+      }
+      return this.resultSelected.tasks.every(
+        (task) => Number(task.orderTask) !== Number(this.taskOrder)
+      );
     },
   },
 
@@ -66,22 +87,59 @@ export default {
       this.finish();
     },
 
+    loadResult() {
+      if (this.testSelected._id !== this.resultSelected?.testId) {
+        getResultByTestId(this.testSelected._id).then((response) => {
+          const { data } = response;
+
+          const actualResult = data.results.find((result) => {
+            return result.tasks.every(
+              (task) => Number(task.orderTask) !== Number(this.taskOrder)
+            );
+          });
+
+          this.$store.dispatch({
+            type: "result/setResult",
+            value: actualResult,
+          });
+        });
+      }
+    },
+
     finish() {
       this.finishDate = dayjs();
       const diffTimeTask = this.finishDate.diff(this.initDate);
-      registerResult({
-        testId: this.testSelected._id,
-        orderTask: this.taskOrder,
-        timeTask: dayjs(diffTimeTask).format("mm:ss"),
-        aborted: this.aborted,
-        clicks: this.clicks,
-      }).then((response) => {
-        if (!this.isLastTask) {
-          this.nextTask();
-        } else {
-          this.susForm(response._id);
-        }
+      if (this.taskHasResult) {
+        addTaskResult({
+          _id: this.resultSelected._id,
+          orderTask: this.taskOrder,
+          timeTask: dayjs(diffTimeTask).format("mm:ss"),
+          aborted: this.aborted,
+        }).then((response) => {
+          this.testNextStep(response);
+        });
+      } else {
+        registerResult({
+          testId: this.testSelected._id,
+          orderTask: this.taskOrder,
+          timeTask: dayjs(diffTimeTask).format("mm:ss"),
+          aborted: this.aborted,
+        }).then((response) => {
+          this.testNextStep(response);
+        });
+      }
+    },
+    testNextStep(response) {
+      const { data } = response;
+      this.$store.dispatch({
+        type: "result/setResult",
+        value: data.result,
       });
+      if (!this.isLastTask) {
+        this.nextTask();
+      } else {
+        this.susForm(data.result._id);
+      }
     },
     nextTask() {
       this.$router.push({
