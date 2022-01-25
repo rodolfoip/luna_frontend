@@ -1,4 +1,5 @@
 import Header from "@/components/Header";
+import Notification from "@/components/Notification";
 
 import { required, minLength, url } from "vuelidate/lib/validators";
 import { registerTest, updateTest, getTestById } from "@/services/test";
@@ -8,6 +9,7 @@ export default {
 
   components: {
     Header,
+    Notification,
   },
 
   data() {
@@ -17,6 +19,11 @@ export default {
         accessCode: "",
         externalLink: "",
         prototypeLink: "",
+      },
+      alertConfig: {
+        show: false,
+        type: "error",
+        text: "Código de acesso existente, tente um código diferente",
       },
     };
   },
@@ -88,7 +95,14 @@ export default {
           userId: this.userId,
         });
       } catch (err) {
-        return err;
+        const { status, data } = err.response;
+        this.alertConfig.show = true;
+
+        if (status !== 409) {
+          this.alertConfig.text = data.error;
+        }
+
+        return data;
       }
     },
     async update() {
@@ -122,7 +136,10 @@ export default {
               this.$router.push("/usability-test/list");
             }
           })
-          .catch((err) => console.error(err));
+          .catch((err) => {
+            const { status, data } = err.response;
+            console.error(status, data);
+          });
       } else {
         this.update()
           .then((response) => {
