@@ -171,13 +171,14 @@ export default {
             }
           })
           .catch((err) => console.error(err));
+      } else {
+        this.$router.push({
+          name: "TaskRegister",
+          params: {
+            id: this.$route.params.id,
+          },
+        });
       }
-      this.$router.push({
-        name: "TaskRegister",
-        params: {
-          id: this.$route.params.id,
-        },
-      });
     },
   },
 
