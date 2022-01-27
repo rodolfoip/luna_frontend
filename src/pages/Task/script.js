@@ -2,9 +2,14 @@ import { participant } from "@/mixins/Participant";
 import dayjs from "dayjs";
 import { registerResult, getResultByTestId, addTaskResult } from "@/services";
 import { mapGetters } from "vuex";
+import Notification from "@/components/Notification";
 
 export default {
   name: "Task",
+
+  components: {
+    Notification,
+  },
 
   mixins: [participant],
 
@@ -55,6 +60,11 @@ export default {
       clicks: 0,
       prototypeIframe: null,
       aborted: false,
+      alertConfig: {
+        show: false,
+        type: "error",
+        text: "Ocorreu um erro inesperado",
+      },
     };
   },
 
@@ -115,18 +125,30 @@ export default {
           orderTask: this.taskOrder,
           timeTask: dayjs(diffTimeTask).format("mm:ss"),
           aborted: this.aborted,
-        }).then((response) => {
-          this.testNextStep(response);
-        });
+        })
+          .then((response) => {
+            this.testNextStep(response);
+          })
+          .catch((err) => {
+            const { data } = err.response;
+            this.alertConfig.text = data.error;
+            this.alertConfig.show = true;
+          });
       } else {
         registerResult({
           testId: this.testSelected._id,
           orderTask: this.taskOrder,
           timeTask: dayjs(diffTimeTask).format("mm:ss"),
           aborted: this.aborted,
-        }).then((response) => {
-          this.testNextStep(response);
-        });
+        })
+          .then((response) => {
+            this.testNextStep(response);
+          })
+          .catch((err) => {
+            const { data } = err.response;
+            this.alertConfig.text = data.error;
+            this.alertConfig.show = true;
+          });
       }
     },
     testNextStep(response) {

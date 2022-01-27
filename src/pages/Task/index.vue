@@ -1,5 +1,11 @@
 <template>
   <div class="task" v-if="testSelected">
+    <Notification
+      :show="alertConfig.show"
+      :type="alertConfig.type"
+      :text="alertConfig.text"
+      @hide-notification="() => (alertConfig.show = false)"
+    />
     <v-expansion-panels class="task-menu">
       <v-expansion-panel>
         <v-expansion-panel-header class="task-menu__header">
