@@ -52,7 +52,9 @@ export default {
           this.result = data.result;
         })
         .catch((err) => {
-          console.error(err);
+          const { data } = err.response;
+          this.alertConfig.text = data.error;
+          this.alertConfig.show = true;
         });
     },
     saveAffectGrid() {
