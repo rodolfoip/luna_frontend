@@ -23,6 +23,9 @@
                   v-model="accessCode"
                   label="Código de acesso"
                   required
+                  :error-messages="accessCodeError"
+                  @input="$v.accessCode.$touch()"
+                  @blur="$v.accessCode.$touch()"
                 ></v-text-field>
               </v-form>
               <v-btn color="primary" elevation="2" type="submit">
