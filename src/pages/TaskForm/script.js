@@ -1,5 +1,6 @@
 import { required } from "vuelidate/lib/validators";
 import Header from "@/components/Header";
+import Notification from "@/components/Notification";
 import { updateResult } from "@/services";
 
 export default {
@@ -7,6 +8,7 @@ export default {
 
   components: {
     Header,
+    Notification,
   },
 
   computed: {
@@ -78,10 +80,16 @@ export default {
       updateResult({
         _id: this.resultId,
         sus: susScore,
-      }).then((response) => {
-        const { data } = response;
-        this.affectGridPage(data.result._id);
-      });
+      })
+        .then((response) => {
+          const { data } = response;
+          this.affectGridPage(data.result._id);
+        })
+        .catch((err) => {
+          const { data } = err.response;
+          this.alertConfig.text = data.error;
+          this.alertConfig.show = true;
+        });
     },
 
     calculateSusScore() {
