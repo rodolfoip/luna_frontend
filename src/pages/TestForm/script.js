@@ -122,6 +122,10 @@ export default {
           userId: this.form.userId,
         });
       } catch (err) {
+        const { data } = err.response;
+        this.alertConfig.show = true;
+        this.alertConfig.text = data.error;
+
         return err;
       }
     },
