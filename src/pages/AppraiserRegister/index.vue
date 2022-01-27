@@ -59,6 +59,14 @@
                 @input="$v.form.confirmPassword.$touch()"
                 @blur="$v.form.confirmPassword.$touch()"
               ></v-text-field>
+              <v-btn
+                color="blue-grey lighten-1"
+                class="mr-5 white--text"
+                elevation="2"
+                to="/appraiser"
+              >
+                Voltar
+              </v-btn>
               <v-btn color="primary" elevation="2" type="submit">
                 Salvar
               </v-btn>
