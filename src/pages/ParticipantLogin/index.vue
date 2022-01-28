@@ -26,6 +26,7 @@
                   :error-messages="accessCodeError"
                   @input="$v.accessCode.$touch()"
                   @blur="$v.accessCode.$touch()"
+                  @keypress.enter.prevent
                 ></v-text-field>
               </v-form>
               <v-btn color="primary" elevation="2" type="submit">
