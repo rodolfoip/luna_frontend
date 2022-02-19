@@ -17,9 +17,15 @@
             <h2 class="test-init__title">Teste: {{ testSelected.name }}</h2>
             <div class="test-init__description">
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a
-                purus varius, malesuada sapien non, semper nibh. Nunc sodales
-                velit id posuere condimentum. Integer eget sollicitudin turpis.
+                Ao clicar em iniciar, você estará aceitando participar deste
+                teste, cujo objetivo é coletar informações tais como, tempo de
+                realização das tarefas, um questionário de satisfação de uso e o
+                preenchimento de uma matriz para registrar o sentimento sentido
+                durante o teste.
+              </p>
+              <p>
+                Caso você não deseje realizar o teste, é possível sair do teste
+                clicando em sair no canto superior direito da tela.
               </p>
               <p>
                 Antes de iniciar o teste preencha o formulário de perfil,
