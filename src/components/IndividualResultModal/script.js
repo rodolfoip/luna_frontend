@@ -16,7 +16,7 @@ export default {
     return {
       headers: [
         { text: "N°", align: "start", value: "orderTask" },
-        { text: "Tempo de realização", value: "timeTask" },
+        { text: "Tempo de realização (Em minutos)", value: "timeTask" },
         { text: "Finalizou a tarefa?", value: "aborted" },
       ],
     };
