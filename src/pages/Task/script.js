@@ -58,6 +58,7 @@ export default {
       initDate: "",
       finishDate: "",
       clicks: 0,
+      menu: 0,
       prototypeIframe: null,
       aborted: false,
       alertConfig: {

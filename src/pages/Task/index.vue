@@ -6,7 +6,7 @@
       :text="alertConfig.text"
       @hide-notification="() => (alertConfig.show = false)"
     />
-    <v-expansion-panels class="task-menu">
+    <v-expansion-panels v-model="menu" class="task-menu">
       <v-expansion-panel>
         <v-expansion-panel-header class="task-menu__header">
           <div class="text">
