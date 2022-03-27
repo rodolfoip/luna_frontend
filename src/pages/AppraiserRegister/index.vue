@@ -8,7 +8,7 @@
     />
     <v-container>
       <v-row justify="center">
-        <v-col sm="6" lg="3">
+        <v-col sm="8" md="6" lg="5" xl="4">
           <v-card elevation="0" class="register-appraiser__form">
             <h4 class="form__title">Cadastrar avaliador</h4>
             <div class="form__subtitle">
