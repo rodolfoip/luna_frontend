@@ -8,7 +8,7 @@
     />
     <v-container>
       <v-row justify="center">
-        <v-col sm="6" lg="3">
+        <v-col sm="10" md="6" lg="5" xl="3">
           <v-card elevation="0" class="login-appraiser__form">
             <h4 class="form__title">Entrar como avaliador</h4>
             <v-form @submit.prevent="login">
@@ -43,7 +43,7 @@
                 color="secondary"
                 elevation="2"
                 to="/appraiser/register"
-                class="mb-5"
+                class="mb-5 form__button"
               >
                 Cadastrar nova conta
               </v-btn>
@@ -52,7 +52,7 @@
                 color="green darken-1"
                 elevation="2"
                 to="/participant"
-                class="mt-3 white--text"
+                class="mt-3 white--text form__button"
               >
                 Entrar como participante
               </v-btn>

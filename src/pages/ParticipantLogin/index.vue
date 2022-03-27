@@ -8,7 +8,7 @@
     />
     <v-container>
       <v-row justify="center">
-        <v-col sm="6" lg="3">
+        <v-col sm="10" md="6" lg="5" xl="3">
           <v-form @submit.prevent="initTest">
             <v-card elevation="0" class="login-participant__form">
               <h4 class="form__title">Acessar teste</h4>
@@ -29,7 +29,12 @@
                   @keypress.enter.prevent
                 ></v-text-field>
               </v-form>
-              <v-btn color="primary" elevation="2" type="submit">
+              <v-btn
+                color="primary"
+                elevation="2"
+                type="submit"
+                class="form__button"
+              >
                 Entrar
               </v-btn>
               <h5 class="form-divisor">ou</h5>
@@ -37,7 +42,7 @@
                 color="green darken-1"
                 elevation="2"
                 to="/appraiser"
-                class="mt-4 white--text"
+                class="mt-4 white--text form__button"
               >
                 Entrar como avaliador
               </v-btn>
