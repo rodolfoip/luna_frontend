@@ -12,7 +12,7 @@ export const registerTask = ({ userId, testId, order, description }) => {
 export const updateTask = ({
   userId,
   testId,
-  order,
+  actualOrder,
   newOrder,
   description,
   sus,
@@ -21,7 +21,7 @@ export const updateTask = ({
   return API.put("/usability-test/task", {
     userId,
     testId,
-    order,
+    actualOrder,
     newOrder,
     description,
     sus,

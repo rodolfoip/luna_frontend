@@ -103,7 +103,7 @@ export default {
         return await updateTask({
           userId: this.userId,
           testId: this.$route.params.id,
-          order: this.$route.params.order,
+          actualOrder: this.$route.params.order,
           newOrder: this.form.order,
           description: this.form.description,
         });
