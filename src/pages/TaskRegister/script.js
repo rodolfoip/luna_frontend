@@ -85,16 +85,12 @@ export default {
         return;
       }
 
-      try {
-        return await registerTask({
-          userId: this.userId,
-          testId: this.$route.params.id,
-          order: this.form.order,
-          description: this.form.description,
-        });
-      } catch (err) {
-        return err;
-      }
+      return await registerTask({
+        userId: this.userId,
+        testId: this.$route.params.id,
+        order: this.form.order,
+        description: this.form.description,
+      });
     },
 
     async update() {
@@ -124,7 +120,10 @@ export default {
               response?.status === 201 &&
               response?.statusText === "Created"
             ) {
+              // TODO - Padronizar tipos de erros utilizando valores pre-definidos
               this.alertConfig.show = true;
+              this.alertConfig.type = "success";
+              this.alertConfig.text = "Tarefa cadastrada com sucesso";
               setTimeout(() => {
                 this.goToTaskList();
               }, 500);
