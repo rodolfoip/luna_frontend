@@ -86,7 +86,7 @@
           </v-col>
           <v-col cols="4" offset="1">
             <v-text-field
-              label="Link do teste"
+              label="Link para o protótipo da interface"
               placeholder="Link"
               outlined
               dense

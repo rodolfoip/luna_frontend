@@ -54,14 +54,14 @@ export default {
     externalLinkError() {
       const errors = [];
       if (!this.$v.form.externalLink.$dirty) return errors;
-      !this.$v.form.externalLink.url && errors.push("Digite uma url");
+      !this.$v.form.externalLink.url && errors.push("Insira um link");
       !this.$v.form.externalLink.required && errors.push("Link é obrigatório");
       return errors;
     },
     prototypeLinkError() {
       const errors = [];
       if (!this.$v.form.prototypeLink.$dirty) return errors;
-      !this.$v.form.prototypeLink.url && errors.push("Digite uma url");
+      !this.$v.form.prototypeLink.url && errors.push("Insira um link");
       !this.$v.form.prototypeLink.required && errors.push("Link é obrigatório");
       return errors;
     },
