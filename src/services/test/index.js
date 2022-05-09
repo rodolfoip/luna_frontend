@@ -64,3 +64,26 @@ export const updateTest = ({
 export const deleteTest = (userId, id) => {
   return API.delete("/usability-test", { data: { userId, id } });
 };
+
+export const uploadPdfFile = (formData, filename) => {
+  let headers = new Headers();
+  headers.append("Access-Control-Allow-Headers", "filename");
+  headers.append("Content-Type", "application/pdf");
+  headers.append("filename", filename);
+  headers.append("x-api-key", "kUcIwRHVfQ3rkstEQr2GH33zKgIt9ZG22AFjyecO");
+
+  let requestOptions = {
+    method: "POST",
+    headers: headers,
+    body: formData,
+    redirect: "follow",
+  };
+
+  return fetch(
+    "https://x9927deg73.execute-api.us-east-1.amazonaws.com/dev/upload",
+    requestOptions
+  )
+    .then((response) => response.text())
+    .then((result) => console.log(result))
+    .catch((error) => console.log("error", error));
+};
