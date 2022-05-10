@@ -87,12 +87,12 @@
           <v-col cols="4" offset="1">
             <v-file-input
               accept="application/pdf"
-              label="Link para o protótipo da interface"
+              label="Arquivo protótipo da interface, é obrigatório utilizar .pdf"
               outlined
               dense
               v-model="form.prototypeFile"
               :disabled="!nameCodeAreFilled"
-              messages="Preencha os demais campos antes de selecionar o arquivo"
+              :messages="prototypeFileError"
               :error-messages="prototypeLinkError"
             ></v-file-input>
           </v-col>

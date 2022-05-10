@@ -71,6 +71,13 @@ export default {
       !this.$v.form.prototypeLink.required && errors.push("Link é obrigatório");
       return errors;
     },
+    prototypeFileError() {
+      const errors = [];
+      if (!this.nameCodeAreFilled) {
+        errors.push("Preencha os demais campos antes de selecionar o arquivo");
+      }
+      return errors;
+    },
     nameCodeAreFilled() {
       return (this.form.name.length && this.form.accessCode.length) > 0;
     },
