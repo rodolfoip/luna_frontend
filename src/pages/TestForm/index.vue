@@ -85,16 +85,16 @@
             ></v-text-field>
           </v-col>
           <v-col cols="4" offset="1">
-            <v-text-field
+            <v-file-input
+              accept="application/pdf"
               label="Link para o protótipo da interface"
-              placeholder="Link"
               outlined
               dense
+              v-model="form.prototypeFile"
+              :disabled="!nameCodeAreFilled"
+              messages="Preencha os demais campos antes de selecionar o arquivo"
               :error-messages="prototypeLinkError"
-              v-model="form.prototypeLink"
-              @input="$v.form.prototypeLink.$touch()"
-              @blur="$v.form.prototypeLink.$touch()"
-            ></v-text-field>
+            ></v-file-input>
           </v-col>
         </v-row>
       </v-form>

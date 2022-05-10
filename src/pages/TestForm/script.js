@@ -2,7 +2,12 @@ import Header from "@/components/Header";
 import Notification from "@/components/Notification";
 
 import { required, minLength, url } from "vuelidate/lib/validators";
-import { registerTest, updateTest, getTestById } from "@/services/test";
+import {
+  registerTest,
+  updateTest,
+  getTestById,
+  uploadPdfFile,
+} from "@/services";
 
 export default {
   name: "TestForm",
@@ -25,6 +30,7 @@ export default {
         type: "error",
         text: "Código de acesso existente, tente um código diferente",
       },
+      prototypeFile: "",
     };
   },
 
@@ -65,6 +71,9 @@ export default {
       !this.$v.form.prototypeLink.required && errors.push("Link é obrigatório");
       return errors;
     },
+    nameCodeAreFilled() {
+      return (this.form.name.length && this.form.accessCode.length) > 0;
+    },
     isEditPage() {
       return this.$route.name === "TestEdit";
     },
@@ -80,6 +89,7 @@ export default {
         this.form = { ...data.usabilityTest };
       });
     },
+
     async register() {
       this.$v.$touch();
       if (this.$v.$error && this.$v.$invalid) {
@@ -105,6 +115,7 @@ export default {
         return data;
       }
     },
+
     async update() {
       this.$v.$touch();
       if (this.$v.$error && this.$v.$invalid) {
@@ -129,7 +140,10 @@ export default {
         return err;
       }
     },
-    saveTest() {
+
+    async saveTest() {
+      await this.uploadFile();
+
       if (!this.isEditPage) {
         this.register()
           .then((response) => {
@@ -154,6 +168,7 @@ export default {
           .catch((err) => console.error(err));
       }
     },
+
     addTask() {
       if (!this.isEditPage) {
         this.register()
@@ -183,6 +198,24 @@ export default {
           },
         });
       }
+    },
+
+    async uploadFile() {
+      const formData = new FormData();
+      const filename =
+        this.form.name.replace(/ /g, "") +
+        "-" +
+        this.form.accessCode +
+        "-" +
+        this.form.prototypeFile.name;
+      formData.append("file", this.form.prototypeFile);
+      await uploadPdfFile(formData, filename)
+        .then((response) => {
+          this.form.prototypeLink = response.body.url;
+        })
+        .catch((err) => {
+          console.error(err);
+        });
     },
   },
 
