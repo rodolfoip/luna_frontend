@@ -83,7 +83,7 @@ export const uploadPdfFile = (formData, filename) => {
     "https://x9927deg73.execute-api.us-east-1.amazonaws.com/dev/upload",
     requestOptions
   )
-    .then((response) => response.text())
-    .then((result) => console.log(result))
-    .catch((error) => console.log("error", error));
+    .then((response) => response.json())
+    .then((data) => data)
+    .catch((error) => error);
 };
