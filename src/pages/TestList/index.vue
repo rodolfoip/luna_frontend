@@ -37,7 +37,7 @@
         <v-data-table
           :headers="headers"
           :items="listTests"
-          :items-per-page="5"
+          :items-per-page="15"
           class="elevation-1"
           @click:row="openTaskList"
         >
