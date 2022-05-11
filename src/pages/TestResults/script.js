@@ -21,7 +21,7 @@ export default {
         { text: "N°", align: "start", value: "index" },
         { text: "Eficácia (%)", value: "effectiveness" },
         { text: "Eficiência (Em horas)", value: "efficiency" },
-        { text: "Satisfação (Pts)", value: "sus" },
+        { text: "Satisfação (Pontos SUS)", value: "sus" },
         { text: "Affect Grid", value: "affectGrid", sortable: false },
       ],
       affectGrid: {
