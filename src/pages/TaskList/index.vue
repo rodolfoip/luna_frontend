@@ -25,7 +25,7 @@
         <v-data-table
           :headers="headers"
           :items="testTasks"
-          :items-per-page="5"
+          :items-per-page="15"
           class="elevation-1"
           :single-expand="singleExpand"
           :expanded.sync="expanded"
