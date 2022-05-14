@@ -12,7 +12,9 @@
           <div class="text">
             <v-icon left>mdi-menu</v-icon>
             Menu - Teste {{ testSelected.name }}
-            <small class="ml-4">(clique para expandir)</small>
+            <small class="ml-4">
+              (clique para {{ menu == 0 ? "expandir" : "ocultar" }})
+            </small>
           </div>
         </v-expansion-panel-header>
         <v-expansion-panel-content class="task-menu__content">
