@@ -13,6 +13,7 @@ import TestInit from "../pages/TestInit";
 import TaskInit from "../pages/TaskInit";
 import TaskForm from "../pages/TaskForm";
 import TaskAffectGrid from "../pages/TaskAffectGrid";
+import TaskFinished from "../pages/TaskFinished";
 import Task from "../pages/Task";
 
 import checkUserLogged from "./checkUserlogged";
@@ -101,6 +102,11 @@ const routes = [
     path: "/participant/test/:id/affect-grid/",
     name: "AffectGrid",
     component: TaskAffectGrid,
+  },
+  {
+    path: "/participant/test/task-finished/",
+    name: "TaskFinished",
+    component: TaskFinished,
   },
   {
     path: "/participant/test/:accessCode/task/:order",

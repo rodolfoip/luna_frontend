@@ -75,7 +75,9 @@ export default {
             text: "Affect Grid salvo com sucesso",
           };
 
-          this.$router.push("/");
+          this.$router.push({
+            name: "TaskFinished",
+          });
         })
         .catch((err) => {
           this.alertConfig = {
