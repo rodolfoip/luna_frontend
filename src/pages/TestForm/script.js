@@ -224,6 +224,11 @@ export default {
           console.error(err);
         });
     },
+
+    removePrototypeLink() {
+      this.form.prototypeLink = "";
+      this.prototypeFile = "";
+    },
   },
 
   validations: {

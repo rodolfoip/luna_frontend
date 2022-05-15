@@ -85,11 +85,30 @@
             ></v-text-field>
           </v-col>
           <v-col cols="4" offset="1">
+            <a
+              v-if="form.prototypeLink"
+              :href="form.prototypeLink"
+              target="_blank"
+              no-referer
+              class="d-block mb-4"
+            >
+              Link para o protótipo da interface
+            </a>
+            <v-btn
+              small
+              color="yellow accent-4"
+              elevation="0"
+              @click="removePrototypeLink"
+              v-show="form.prototypeLink"
+            >
+              Remover protótipo
+            </v-btn>
             <v-file-input
               accept="application/pdf"
               label="Arquivo protótipo da interface, é obrigatório utilizar .pdf"
               outlined
               dense
+              v-show="!form.prototypeLink"
               v-model="form.prototypeFile"
               :disabled="!nameCodeAreFilled"
               :messages="prototypeFileError"
