@@ -176,7 +176,9 @@ export default {
       }
     },
 
-    addTask() {
+    async addTask() {
+      await this.uploadFile();
+
       if (!this.isEditPage) {
         this.register()
           .then((response) => {
