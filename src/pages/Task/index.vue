@@ -13,7 +13,7 @@
             <v-icon left>mdi-menu</v-icon>
             Menu - Teste {{ testSelected.name }}
             <small class="ml-4">
-              (clique para {{ menu == 0 ? "expandir" : "ocultar" }})
+              (clique para {{ menu == 1 ? "expandir" : "ocultar" }})
             </small>
           </div>
         </v-expansion-panel-header>
