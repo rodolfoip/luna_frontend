@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import Notification from "@/components/Notification";
 import { listTests, deleteTest } from "@/services/test";
+import { getResultByTestId } from "@/services";
 
 export default {
   name: "TestList",
@@ -21,6 +22,8 @@ export default {
       headers: [
         { text: "Nome", align: "start", value: "name" },
         { text: "Código", align: "start", value: "accessCode" },
+        { text: "Realizado?", value: "realized" },
+        { text: "Qtd realizados", value: "quantity" },
         { text: "Ações", value: "actions", sortable: false },
       ],
       items: [],
@@ -43,11 +46,19 @@ export default {
   },
 
   methods: {
-    getTestList() {
+    async getTestList() {
       listTests(this.userId).then((response) => {
         const { data } = response;
-        this.$data.items = data.list;
+        this.$data.items = data.list.map((item) => {
+          this.getResultByTest(item._id).then((results) => {
+            item.quantity = results.data.results.length;
+          });
+          return item;
+        });
       });
+    },
+    async getResultByTest(testId) {
+      return await getResultByTestId(testId);
     },
     openTaskList(item) {
       this.$router.push({ name: "TaskList", params: { id: item._id } });
