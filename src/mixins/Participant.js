@@ -12,6 +12,9 @@ export const participant = {
     tasks() {
       return this.testSelected?.tasks || [];
     },
+    testName() {
+      return this.testSelected.name ?? "Teste XXX";
+    },
   },
 
   methods: {

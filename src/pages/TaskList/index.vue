@@ -21,7 +21,9 @@
     </Header>
     <v-container>
       <div class="task-list__content">
-        <h2 class="task-list__title">Lista de tarefas</h2>
+        <h2 class="task-list__title">
+          Lista de tarefas - {{ this.testSelected.name }}
+        </h2>
         <v-data-table
           :headers="headers"
           :items="testTasks"

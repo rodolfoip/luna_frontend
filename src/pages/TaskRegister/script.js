@@ -2,9 +2,13 @@ import { required, minLength, numeric } from "vuelidate/lib/validators";
 import Header from "@/components/Header";
 import Notification from "@/components/Notification";
 import { registerTask, getTestById, updateTask } from "@/services";
+import { test } from "@/mixins/Test";
+import { result } from "@/mixins/Result";
 
 export default {
   name: "TaskRegister",
+
+  mixins: [test, result],
 
   components: {
     Header,

@@ -2,9 +2,12 @@ import { required } from "vuelidate/lib/validators";
 import Header from "@/components/Header";
 import Notification from "@/components/Notification";
 import { updateResult } from "@/services";
+import { participant } from "@/mixins/Participant";
 
 export default {
   name: "TaskForm",
+
+  mixins: [participant],
 
   components: {
     Header,

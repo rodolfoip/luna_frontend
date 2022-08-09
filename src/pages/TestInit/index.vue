@@ -3,7 +3,7 @@
     <Header>
       <v-row justify="space-between">
         <v-col cols="auto d-flex align-center">
-          <div class="header__title">Teste XXX</div>
+          <div class="header__title">{{ this.testName }}</div>
         </v-col>
         <v-col cols="auto">
           <v-btn small color="info" elevation="0" to="/">Sair</v-btn>

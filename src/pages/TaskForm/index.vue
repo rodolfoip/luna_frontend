@@ -9,7 +9,7 @@
     <Header>
       <v-row justify="space-between">
         <v-col cols="auto d-flex align-center">
-          <div class="header__title">Teste XXX</div>
+          <div class="header__title">{{ this.testName }}</div>
           <div class="header__subtitle">Questionário SUS</div>
         </v-col>
         <v-col cols="auto">
